@@ -1,0 +1,503 @@
+
+ .container {
+   
+   
+    padding-top: 0;/*顶部空出的距离*/
+}
+.row{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+img{
+    display: block;
+}
+.ctn {
+    width: 100%;
+    height: auto;
+    
+    /*background-color: pink;*/
+}
+ 
+.imgbox {/*放大以前*/
+    /*width: 250px;
+    height: 325px;*/
+    width:100%;
+    /*height: 250px;*/
+   /* float:right;*/ /*竖着的时候用*/
+    position: relative;
+}
+ 
+.smallimg,
+#smallimg {
+    width: 100%;
+    height: 100%;
+}
+ 
+.smallimg {
+    display: block;
+}
+ 
+.bigbox {/*放大以后*/
+    position: absolute;
+    top: 0px;
+    /*left: 340px;*/
+    left:0;
+   /* width: 500px;
+    height: 500px;*/
+    /*width: 250px;
+    height: 325px;*/
+    width:100%;
+    /*height: 250px;*/
+   /* border: 1px solid #CCC;*/
+    display: none;
+    overflow: hidden;
+}
+ 
+#bigimg {
+    position: absolute;
+}
+ 
+#layer {
+    width: 128px;
+    height: 128px;
+    background: url(../images/mask.png) repeat 0 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+    cursor: move;
+}
+ 
+.imgsbox {
+    /*float:left;*//*竖着的时候用*/
+    margin-top: 40px; /*竖着的时候是0*/
+    /*width: 60px;*/ /*竖着的时候用*/
+   /* height: 310px;*/ /*竖着的时候用*/
+   /*width: 310px;*/
+   width:100%;
+   height: auto;
+    overflow: hidden;
+    position: relative;
+    /*background-color: yellow;*/
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ 
+#imgslist {
+    list-style-type: none;
+    width: 100%;
+
+    /*position: absolute;
+    left: 0px;
+    top: 0px;*/ /*竖着的时候用*/
+}
+ 
+.imglist {
+    float: left; /*横着的时候用要删除这句*/
+    border: 2px solid transparent;
+    /*margin-right: 3px;*//*竖着的时候用*/
+}
+ 
+
+ 
+
+.simg {
+    width: 60px;
+    height: 75px;
+    
+    /*margin-bottom: 2px;*/
+    
+}
+.imglist{
+    padding: 2px;
+    margin-right: 2px;
+}
+
+.details-info{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2f2f2f;
+    /*margin-left: 15px;
+    margin-right: 15px;*/
+}
+.details-title{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 30px;
+}
+.details-price{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 30px;
+}
+.product-color-container{
+    margin-top: 25px; 
+   width:100%;
+   height: auto;
+    overflow: hidden;
+    
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+.color-name{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #2f2f2f;
+     margin-top: 20px;
+}
+.product-color-ul{
+    list-style-type: none;
+}
+.product-color-li{
+    float: left; /*横着的时候用要删除这句*/
+    border: 2px solid transparent;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+/*.color1{
+    display: block;
+    width: 40px;
+    height: 30px;
+     margin: 2px;
+
+}
+.color1 input{
+    opacity: 0; 
+}*/
+.color{
+    display: block;
+    width: 40px;
+    height: 30px;
+     margin: 2px;
+
+
+    
+    /*margin-bottom: 2px;*/
+    
+}
+.color input{
+    /*display: none;*/
+    opacity: 0; 
+}
+.size input{
+    /*display: none;*/
+    opacity: 0; 
+}
+
+
+
+
+.product-size-container{
+    
+   width:100%;
+   height: auto;
+    overflow: hidden;
+    
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+.size-name{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #2f2f2f;
+     /*margin-top: 20px;*/
+     margin-bottom: 20px;
+}
+
+.product-size-ul{
+    list-style-type: none;
+}
+.product-size-li{
+    float: left; /*横着的时候用要删除这句*/
+    
+    margin-bottom: 15px;
+    margin-right: 15px;
+   
+    border: 2px solid transparent;
+    
+}
+
+.size{
+    display: block;
+    width: 40px;
+    /*padding-left:10px;
+    padding-right:10px;*/
+    height: 30px;
+     
+    line-height: 30px;
+    /*margin: 2px;*/
+    text-align: center;
+    color:#2f2f2f;
+    border: 1px solid #2f2f2f;
+    
+    
+    font-size: 14px;
+    margin: 2px;
+    
+    /*margin-bottom: 2px;*/
+    
+}
+
+.size-span{
+    display: block;
+}
+
+
+
+.selected{
+    border: 2px solid #2f2f2f;
+}
+.size-selected{
+    /*border: 2px solid #2f2f2f;*/
+
+}
+
+.size-selected .size{
+    background-color: #2f2f2f;
+    color:#ffffff;
+}
+.btn-add-to-cart{
+   /* display: inline-block;*/ /*继承*/
+    width: 100%;
+    height:50px;
+    line-height: 50px;
+    /*text-align: center;*/ /*继承*/
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.size-chart{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    
+    
+}
+.size-chart-a{
+    text-decoration: underline;
+    color: #2f2f2f;
+}
+.free-shipping-over{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.product-details-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #2f2f2f;
+    border-bottom: 1px solid #2f2f2f;
+}
+.product-details{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.product-details-section{
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+}
+.details-title{
+    height: 24px;
+    font-size: 14px;
+    line-height: 14px;
+}
+.details-description{
+    font-size: 13px;
+    font-family: "Trade Gothic Regular","Arial",sans-serif;
+    letter-spacing: 0.6px;
+    line-height: 22px;
+}
+.model-specs{
+    font-size: 13px;
+    
+    font-family: "Trade Gothic Regular","Arial",sans-serif;
+    letter-spacing: 0.6px;
+    line-height: 22px;
+    margin-top: 23px;
+}
+.model-specs-height{
+
+}
+.model-specs-size{
+
+}
+.fabric-care{
+
+}
+.fabric-care-container{
+    margin: 33px 0 0 0;
+    overflow: hidden;
+
+}
+.fabric-care-title{
+    font-size: 13px;
+   
+    color: #63605A;
+    font-family: "Trade Gothic Bold","Arial",sans-serif;
+    line-height: 16px;
+    text-transform: capitalize;
+    margin-bottom: 22px;
+    padding-bottom: 0;
+}
+.fabric-care-list{
+    font-family: "Trade Gothic Regular","Arial",sans-serif;
+
+    padding-left: 16px;
+}
+.fabric-care-list-overflow{
+    font-family: "Trade Gothic Regular","Arial",sans-serif;
+    
+    padding-left: 16px;
+}
+.fabric{
+    display: list-item;
+    font-size: 13px;
+   
+    
+    letter-spacing: 0.6px;
+    line-height: 22px;
+    
+}
+.care{
+    font-size: 13px;
+    
+    
+    letter-spacing: 0.6px;
+    line-height: 22px;
+}
+.icon {
+    /*background:url('{{URL::to('images/bullets.png')}}') right center no-repeat;*/
+    background: url(../../src/images/bullets.png) no-repeat;
+    width: 12px;
+    height: 12px;
+    float: right;   
+    position: relative;
+    right: 0;
+    top: 20px;
+}
+
+.opened .icon {
+    background-position: left bottom;
+}
+.product-details-container ul,.product-details-container li{
+    list-style-type: disc !important;
+
+}
+.error{
+    /*color: #a94442;*/
+    display: block !important;
+}
+.add_cart_errors{
+    margin: 10px 0;
+}
+.add_cart_errors li{
+    margin: 10px 0;
+}
+
+.product-qty-container{
+    margin-top: 10px;
+}
+
+.product-quality-label{
+    height:30px;
+    line-height: 30px;
+}
+.product-quality-select{
+    height:25px;
+    margin-left: 15px;
+    padding: 5px 15px;
+    background-image: none; /*把下来的箭头给去掉*/
+}
+
+
+@media only screen and (min-width: 1025px) {
+.detail-top-wrap{
+    width:1024px;
+    margin: 0 auto;
+    /*background-color: pink;*/
+    padding-top: 40px;
+}
+
+.imgsbox{
+    width:90px;
+    display: inline-block;
+    margin-top: 0;
+    float: left;
+    /*background-color:blue;*/
+    padding-left: 0px;
+    padding-right: 20px;
+    
+}
+.imgslist{
+
+}
+.imglist {
+    float:none;    
+}
+
+.details-right-wrap{
+    /*width:340px;*/
+    width: calc(40% - 90px);
+    display: inline-block;
+    float:right;
+    /*background-color:yellow;*/
+    padding: 0;
+}
+.ctn{
+    /*width:594px;*/
+    width: calc(60% - 20px);
+    display: inline-block;
+    margin-right:20px;
+    /*float:right;*/
+    /*margin-left: 100px;*/  
+}
+.product-details-container{
+    width:1024px;
+    margin: 40px auto;
+}
+
+
+
+.bigbox{
+   
+    /*width:400px;
+    height:500px;*/
+    width:100%;  /*相对于父元素的100%，要不然当他的子元素被绝对定位以后，他就没高度了*/
+    height:100%;
+    /*background-color: red;*/
+
+}
+#bigimg{
+    /*width:960px !important;
+    height:1200px !important;*/
+    /*position: relative;*/
+}
+
+/*.product-details-container{
+    border:none;
+}
+
+.product-details{
+    display: none;
+}
+.product-details-section{
+    display: block;   
+}*/
+
+
+
+}

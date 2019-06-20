@@ -1,0 +1,408 @@
+.container {
+   
+    
+    padding-top: 0;/*顶部空出的距离*/
+}
+.content{
+    /*background-color: pink;*/
+    margin-top: 0;
+}
+.tab-nav{
+    margin:0;
+    height:50px;
+    padding:0;
+    border-bottom: 1px solid #8f8f8f;    
+}
+.tab-nav li{
+    margin:0;
+    padding:0;
+    width:50%;
+    height:50px;
+    float:left;
+    text-align:center;
+    line-height:50px;
+    list-style-type:none;
+    position: relative;
+    top:2px;    
+}
+.tab-nav li a{
+  text-decoration: none;
+  color:#8f8f8f;
+  font-size: 14px;
+}
+.current{
+    border-bottom: 5px solid #2f2f2f;
+    color:#2f2f2f;
+}
+.current-a{
+    color:#2f2f2f !important;
+    font-weight: bold;
+}
+.tab-content{
+    height:auto;
+    width:100%;
+    margin-top:40px;
+    margin-bottom:0;
+    /*background-color: blue;*/
+}
+.row{
+    padding:15px 15px 30px 15px;
+    /*background-color: yellow;*/
+}
+.my-info, .my-order-history, .my-order-history-desktop, .order-summary-container, .order-details-container, .shipping-container{
+    width:100%;
+    height:auto;    
+    background-color: #f9f9f9;
+}
+.my-order-history{
+    display: block;
+}
+.my-order-history-desktop{
+    display: none;
+}
+.my-info-header, .my-orders-header{
+    width:100%;
+    height:50px;
+    background-color: #63605a;
+}
+.my-info-header h4, .my-orders-header h4{
+    display: inline-block;
+    float: left;
+    line-height: 50px;
+    font-weight: bold;
+    margin-left: 15px;
+    color:#fff;
+}
+.my-info-content-li{
+    width:100%;
+    /*height:74px;*/
+    padding:23px 0 16px 0;
+    /*background-color: green;*/
+    border-bottom: 1px solid #8f8f8f;
+    
+}
+.my-info-content-li-active{
+    
+    padding:7px 0 0px 0;
+    /*background-color: green;*/
+    border: 1px solid #8f8f8f;
+    margin:16px 0 16px 0;
+    
+}
+.my-info-firstname-group,
+.my-info-gender-group,
+.my-info-email-group,
+.my-info-password-group,
+.my-info-lastname-group,
+.my-info-birthday-group,
+.my-info-phone-group{
+    position: relative;
+}
+
+#my-info-firstname-input,
+#my-info-gender-input,
+#my-info-email-input,
+#my-info-password-input,
+#my-info-lastname-input,
+#my-info-birthday-input,
+#my-info-phone-input{
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    line-height: 16px;
+    outline: none;
+    border: none;
+    /*margin-top: 25px;*/
+    padding: 0 15px 0 15px;
+    background-color: #f9f9f9;
+}
+.my-info-firstname-label,
+.my-info-gender-label,
+.my-info-email-label,
+.my-info-password-label,
+.my-info-lastname-label,
+.my-info-birthday-label,
+.my-info-phone-label{
+    /*display: none;*/
+    /*position: absolute;
+    top: 12px;
+    left: 15px;*/
+    margin-left: 15px;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+    /*background-color: red;*/    
+}
+/*.my-info-firstname-label-active{
+    position: relative;
+    top:12px;
+    font-size: 16px;
+}*/
+.label-active{
+    position: relative;
+    top:12px;
+    font-size: 16px;
+}
+#my-info-edit{
+    display: inline-block;
+    float:right;
+    color:#ffffff;
+    line-height: 50px;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 14px;
+}
+.my-order-history{
+    margin-bottom: 20px;
+}
+/*.order-set-wrap{
+    padding:20px 15px 20px 15px;
+}
+.order-set{
+    width:100%;          
+}
+.order-set a{
+    color:#333;
+}
+.order-set-header{
+    font-weight: bold;
+    height:22px;
+}
+.order-set-cell{
+    height:22px;
+}*/
+.order-set-wrap, .order-summary-container, .order-details-container, .shipping-container{
+    padding:20px 15px 20px 15px;
+}
+.order-set{
+    width:100%;          
+}
+.order-set a{
+    color:#333;
+}
+.order-set-header{
+    font-weight: bold;
+    height:22px;
+}
+.placed-group{
+
+}
+.order-set-cell{
+    height:22px;
+}
+.order-set-field{
+    display:inline-block;
+    float:left;
+    text-align: left;
+}
+.order-set-value{
+    display:inline-block;
+    float: right;
+}
+.order-total-group{
+    font-weight: bold;
+    margin-top: 15px;
+}
+.btn-view-order-details{
+    width: 100%;
+    height:50px;
+    line-height: 50px;
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size: 16px;
+}
+
+.btn-edit-my-info{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    /* margin-bottom: 20px;*/
+    color: #fff;
+    padding: 0;
+}
+.errors_container {
+    margin-top: 20px;
+}
+.backend-errors-container{
+    display: none;
+}
+.show-password{
+    position: absolute;
+    top: 50%;
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    transform: translateY(-50%);
+    padding:0; 
+
+    right:15px;
+    color:#333;
+}
+
+.promotions-container,
+.order-summary-container,
+.order-details-container,
+.shipping-container {
+    /*border-bottom: 1px solid #2f2f2f;*/
+    margin-top: 20px;
+}
+
+.order-summary-container {
+    margin-top: 0px;
+    /*border-top: 1px solid #2f2f2f;*/
+}
+
+.promotions,
+.order-summary,
+.order-details,
+.shipping {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.promotions-section,
+.order-summary-section,
+.order-details-section,
+.shipping-section {
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+}
+
+.order-summary-section table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.order-summary-section table tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+.order-summary-section table tbody tr {
+    display: table-row;
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.order-summary-section table tbody tr th {
+    text-align: left;
+    vertical-align: top;
+    width: 50%;
+}
+
+.order-summary-section table tbody td {
+    text-align: right;
+    vertical-align: top;
+    width: 50%;
+}
+
+.order-summary-section table tbody th a {
+    color: #2f2f2f;
+    text-decoration: underline;
+}
+
+.order-summary-section p {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 10px auto;
+}
+
+.order-summary-section p span {
+    float: right;
+}
+.dropdown-inner {
+    padding:0;
+}
+.shipping-section dl{
+    margin-top: 20px;
+}
+.shipping-section dt, .shipping-section dd{
+   font-size: 14px;
+    line-height: 14px;
+    margin: 10px auto;
+
+}
+
+/*可以放到公用里面去*/
+.icon {
+    /*background:url('{{URL::to('images/bullets.png')}}') right center no-repeat;*/
+    background: url(../../src/images/bullets.png) no-repeat;
+    width: 12px;
+    height: 12px;
+    float: right;   
+    position: relative;
+    right: 0;
+    top: 20px;
+}
+.opened .icon {
+    background-position: left bottom;
+}
+
+
+
+/*.order-set-top{
+    float:left;
+}
+.order-set-bottom{
+    float:right;
+    margin-top: 20px;
+}*/
+/*.order-set-wrap{
+    display: none;
+}*/
+
+
+/*.my-info-gender-group{height:40px;background:#fff url(img/icons.png) no-repeat right 15px;
+color: #a1a1a1; font-size: 16px;
+border:1px solid #E4E4E4;cursor:pointer;position:relative;_filter:alpha(opacity=0);
+
+}
+.sel_wrap label{padding-left:10px;font-size:16px;z-index:2; color: #a1a1a1; line-height: 40px; height: 40px; display: block;}
+.sel_wrap .select{width:100%; height:40px; line-height:40px; z-index:4;position:absolute;top:0;left:0;margin:0;padding:0;opacity:0; *margin-top:12px; filter:alpha(opacity=0);cursor:pointer; font-size: 16px;}*/
+
+@media only screen and (min-width: 1025px) {
+    .my-order-history-desktop{
+        display: block;
+    }
+    .my-order-history{
+        display: none;
+    }
+    .my-info-content{
+        margin-top: 20px;
+    }
+    .my-info-content-wrap:first-child{
+        width: calc(50% - 30px);
+        float: left;
+        margin: 0 10px 0 20px;
+    }
+    .my-info-content-wrap:last-child{
+        width: calc(50% - 30px);
+        float: right;
+        margin: 0 20px 0 10px;
+    }
+    .errors_container, .backend-errors-container{
+        margin: 40px 20px 0 20px;
+    }
+    .promotions-section,
+    .order-summary-section,
+    .order-details-section,
+    .shipping-section {
+        display: block;
+    }
+    
+
+
+
+
+}

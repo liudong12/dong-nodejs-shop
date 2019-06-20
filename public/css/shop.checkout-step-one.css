@@ -1,0 +1,496 @@
+.container {
+    /*margin-top: 50px;*/
+}
+
+header {
+    /*position: relative;*/
+}
+
+.back-to-top {
+    display: none;
+}
+
+.content {
+    padding-bottom: 40px;
+    /*padding-top: 20px;*/
+    /*margin-right: 15px;
+    margin-left: 15px;*/
+    background-color: #ffffff;  /*本来是 #fffef7*/
+    /*background-color: red;*/
+}
+
+.row {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.checkout-h1 {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #222222;  /*本来是 #2f2f2f*/
+    margin-bottom: 20px;
+}
+
+.content > .row > h4 {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.promotions-container,
+.order-summary-container,
+.order-details-container {
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.order-summary-container {
+    margin-top: 40px;
+    border-top: 1px solid #2f2f2f;
+}
+
+.promotions,
+.order-summary,
+.order-details {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.icon {
+    /*background:url('{{URL::to('images/bullets.png')}}') right center no-repeat;*/
+    background: url(../../src/images/bullets.png) no-repeat;
+    width: 12px;
+    height: 12px;
+    float: right;   
+    position: relative;
+    right: 0;
+    top: 20px;
+}
+
+.opened .icon {
+    background-position: left bottom;
+}
+
+.promotions-section,
+.order-summary-section,
+.order-details-section {
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+}
+
+.order-summary-section table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.order-summary-section table tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+.order-summary-section table tbody tr {
+    display: table-row;
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.order-summary-section table tbody tr th {
+    text-align: left;
+    vertical-align: top;
+    width: 50%;
+}
+
+.order-summary-section table tbody td {
+    text-align: right;
+    vertical-align: top;
+    width: 50%;
+}
+
+.order-summary-section table tbody th a {
+    color: #2f2f2f;
+    text-decoration: underline;
+}
+
+.order-summary-section p {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 10px auto;
+}
+
+.order-summary-section p span {
+    float: right;
+}
+
+.promotions-input {
+    float: left;
+    width: 65%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+    outline: none;
+}
+
+.promotions-btn {
+    float: right;
+    width: 30%;
+    min-width: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+    padding: 0;
+}
+
+.signin-join {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #2f2f2f;
+}
+
+.btn-checkout-signin {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    /* margin-bottom: 20px;*/
+    color: #fff;
+}
+
+.btn-checkout-join {
+    margin-left: 15px;
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    /* margin-bottom: 20px;*/
+    color: #fff;
+}
+
+.checkout-first-name-group,
+.checkout-address-group,
+.checkout-card-group,
+.checkout-payment-group,
+.checkout-card-number-group,
+.checkout-exp-group {
+    margin-top: 20px;
+    position: relative;
+}
+
+.checkout-last-name-group,
+.checkout-address-line-two-group,
+.checkout-city-group,
+.checkout-state-zip-group,
+.checkout-state-group,
+.checkout-zip-group,
+.checkout-exp-mon-group,
+.checkout-exp-year-group {
+    position: relative;
+}
+
+.first-name,
+.last-name,
+.address,
+.address-line-two,
+.city,
+.state,
+.zip,
+.card-name,
+.payment-type,
+.card-number,
+.card-expiry-month,
+.card-expiry-year,
+.card-cvc {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    line-height: 16px;
+    outline: none;
+    border: 1px solid #8f8f8f;
+    padding: 0 0 0 10px;
+}
+.last-name,
+.address-line-two,
+.city,
+.state,
+.zip{
+    border-top: none;
+}
+
+.zip{
+        border-left: none;
+}
+
+.card-expiry-year {
+    border-left: none;
+    border-right: none;
+}
+
+.first-name-label,
+.last-name-label,
+.address-label,
+.address-line-two-label,
+.city-label,
+.zip-label,
+.card-name-label,
+.card-number-label,
+.card-cvc-label {
+    display: none;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+/*.label {
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #8f8f8f;
+}
+
+.label-small {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #2f2f2f;
+}*/
+
+/*.card-expiry-month-label-small {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #2f2f2f;
+}
+
+.card-expiry-year-label-small {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #2f2f2f;
+}*/
+.state,
+.payment-type,
+.card-expiry-month,
+.card-expiry-year {
+    padding-top: 18px;
+    padding-left: 6px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.state-label,
+.payment-type-label,
+.card-expiry-month-label,
+.card-expiry-year-label {
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #8f8f8f;
+}
+
+.state-label-small,
+.payment-type-label-small,
+.card-expiry-month-label-small,
+.card-expiry-year-label-small {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #2f2f2f;
+}
+
+.payment-type-hidden,
+.card-expiry-month-hidden,
+.card-expiry-year-hidden {
+    display: none;
+}
+
+.btn-place-order {
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    /* margin-bottom: 20px;*/
+    color: #fff;
+    padding: 0;
+}
+.btn-payment-options{
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    /* margin-bottom: 20px;*/
+    color: #fff;
+    padding: 0;
+}
+
+
+.order-details-section .dropdown-inner { /*这里必须要加 .order-details-section， 要不然头部的购物车下来餐单就没padding了*/
+    padding: 0;
+}
+
+
+#checkout-step-one-form .error label {
+    color: #a94442;
+}
+.errors_container {
+    color: #a94442;
+    background-color: #f2dede;
+    /*border-color: #ebccd1;*/
+    border: 1px solid #ebccd1;
+    /*margin: 5px;*/
+    padding: 10px;
+}
+.errors_container h4{
+    margin-bottom: 10px;
+    /*margin-left: 20px;*/
+}
+.errors_container ol li {
+    /*list-style-type: disc;*/
+    margin:5px 0;
+   /* margin-left: 20px;*/
+}
+.errors_container {
+    display: none
+}
+.errors_container label.error {
+    display: inline;
+}
+/*#checkout-step-one-form {
+    width: 30em;
+}
+#checkout-step-one-form label.error {
+    display: block;
+    margin-left: 1em;
+    width: auto;
+}*/
+
+
+@media only screen and (min-width: 1025px) {
+
+    .content {
+        width:1024px;
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+    .checkout-title{
+        border: none;
+        width: 60%;
+        float:left;
+    }
+    .signin-join{
+        border: none;
+         width: calc(40% - 30px);
+        float: right;
+         margin-bottom: 20px;
+        
+    }
+    
+    .promotions-container{
+        border: none;
+        width: calc(40% - 30px);
+        float: right;
+        border:1px solid #8f8f8f;
+        background-color: #f9f9f9;
+        padding:20px;
+    }
+    .promotions{
+        display: none;
+    }
+    .promotions-section{
+        display: block;
+        margin-bottom: 0;
+
+    }
+    .shipping-info-wrap{
+        width: 60%;
+        border:1px solid #8f8f8f;
+        background-color: #f9f9f9;
+        padding:20px 20px 40px 20px;
+        
+         float:left;
+
+    }
+    .order-summary-container{
+        border: none;
+        width: calc(40% - 30px);
+        float: right;
+        border:1px solid #8f8f8f;
+        background-color: #f9f9f9;
+        padding:20px;
+        margin-top: 30px;
+    }
+    .order-summary{
+        display: none;
+    }
+    .order-summary-section{
+        display: block;
+        margin-bottom: 0;
+
+    }
+    .order-details-container{
+        border: none;
+        width: calc(40% - 30px);
+        float: right;
+        border:1px solid #8f8f8f;
+        background-color: #f9f9f9;
+        padding:20px;
+        margin-top: 30px;
+    }
+    .order-details{
+        display: none;
+    }
+    .order-details-section{
+        display: block;
+        margin-bottom: 0; 
+
+    }
+    .dropdown-inner{
+        max-height: none;
+        overflow-y: hidden;
+    }
+
+    
+}

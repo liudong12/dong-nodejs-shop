@@ -1,0 +1,179 @@
+.declaration-order {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  /* Box-model */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+
+  /* Typography */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+
+  /* Visual */
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+
+  /* Misc */
+  opacity: 1;
+}
+
+
+/*顺序：“important > 
+         内联 > 
+         ID > 
+         类 | 属性选择 | 伪类 > 
+         标签 | 伪元素 > 
+         通配符 > 
+         继承”。
+*/
+/*
+    关于CSS权重，网上教程大都按不同选择器给了权重值：
+
+    STYLE：1000
+    #ID：100
+    .CLASS 10
+    ELEMENT 1
+ */
+/*
+内联：  (a)
+ID:     (b)   #id
+类:     (c)   .class
+属性:   (c)
+              E[attr]：只使用属性名，但没有确定任何属性值；
+              E[attr="value"]：指定属性名，并指定了该属性的属性值；
+              E[attr~="value"]：指定属性名，并且具有属性值，此属性值是一个词列表，并且以空格隔开，其中词列表中包含了一个value词，而且等号前面的“〜”不能不写；
+              E[attr^="value"]：指定了属性名，并且有属性值，属性值是以value开头的；
+              E[attr$="value"]：指定了属性名，并且有属性值，而且属性值是以value结束的；
+              E[attr*="value"]：指定了属性名，并且有属性值，而且属值中包含了value；
+              E[attr|="value"]：指定了属性名，并且属性值是value或者以“value-”开头的值（比如说zh-cn）;
+伪类:   (c)   (pseudo class)
+              :hover 用于当用户把鼠标移动到元素上面时的效果；
+              :active 用于用户点击元素那一下的效果（正发生在点的那一下，松开鼠标左键此动作也就完成了）
+              :focus 用于元素成为焦点，这个经常用在表单元素上。
+              :first-child
+标签:   (d)   div, ul, li...     (也叫 Type selectors)
+伪元素: (d)   (pseudo elements)
+              伪元素选择器只包含以下几种:
+              ::after
+              ::before
+              ::first-letter
+              ::first-line
+              ::selecton
+
+              伪元素跟伪类都是选择器的补充，
+              但是，伪类表示的是一种“状态”比如hover，active等等，
+              而伪元素表示文档的某个确定部分的表现，
+              比如::first-line 伪元素只作用于你前面元素选择器确定的一个元素的第一行。
+              注意，伪元素选择器选择出来的“部分” 不在dom里，也不能对其绑定事件。
+              如果你对伪元素前面的选择器定义的元素绑定了事件，伪元素同样会生效。 
+              永远记得 伪元素生成的是“表现”。
+
+              Notice the double colon notation - ::first-line versus :first-line
+              The double colon replaced the single-colon notation for pseudo-elements in CSS3. 
+              This was an attempt from W3C to distinguish between pseudo-classes and pseudo-elements.
+              The single-colon syntax was used for both pseudo-classes and pseudo-elements in CSS2 and CSS1.
+              For backward compatibility, the single-colon syntax is acceptable for CSS2 and CSS1 pseudo-elements.
+
+              https://www.w3schools.com/css/css_pseudo_classes.asp
+              https://www.w3schools.com/css/css_pseudo_elements.asp
+通配符:       ＊
+ */
+
+选择器权重值的计算
+
+A：如果规则是写在标签的style属性中（内联样式），则A=1，否则，A=0. 对于内联样式，由于没有选择器，所以B、C、D的值都为0，即A=1, B=0, C=0, D=0（简写为1,0,0,0，下同）。
+B：计算该选择器中ID的数量。如果有则B=1，没有B=0（例如，#header 这样的选择器，计算为0, 1, 0, 0）。
+C：计算该选择器中伪类及其它属性的数量（包括class、属性选择器等，不包括伪元素）。（例如， .logo[id='site-logo'] 这样的选择器，计算为0, 0, 2, 0）（后面将进一解释为什么会是0,0,2,0）。
+D：计算该选择器中伪元素及标签的数量。（例如，p:first-letter 这样的选择器，计算为0, 0, 0, 2）。
+
+01 *              {}  /* a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */ 1 个通配符
+02 li             {}  /* a=0 b=0 c=0 d=1 -> specificity = 0,0,0,1 */ 1 个标签 (d)
+03 li::first-line {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */ 1 个标签 (d) + 1 个伪元素 (d)
+04 ul li          {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */ 2 个标签 (d)
+05 ul ol+li       {}  /* a=0 b=0 c=0 d=3 -> specificity = 0,0,0,3 */ 3 个标签 (d)
+06 h1 + *[rel=up] {}  /* a=0 b=0 c=1 d=1 -> specificity = 0,0,1,1 */ 1 个标签 (d) + 1 个属性选择器 (c)
+07 ul ol li.red   {}  /* a=0 b=0 c=1 d=3 -> specificity = 0,0,1,3 */ 3 个标签 (d) + 1 个class (c)
+08 li.red.level   {}  /* a=0 b=0 c=2 d=1 -> specificity = 0,0,2,1 */ 1 个标签 (d) + 2 个class (c)
+09 #x34y          {}  /* a=0 b=1 c=0 d=0 -> specificity = 0,1,0,0 */ 1 个 ID (b)
+10 style=""           /* a=1 b=0 c=0 d=0 -> specificity = 1,0,0,0 */ 1 个内联样式 (a)
+
+/*
+-----------------------------------------------------------------------------------------------------
+What are Pseudo-classes?
+A pseudo-class is used to define a special state of an element.
+
+For example, it can be used to:
+
+- Style an element when a user mouses over it
+- Style visited and unvisited links differently
+- Style an element when it gets focus
+
+Note: a:hover MUST come after a:link and a:visited in the CSS definition in order to be effective! 
+a:active MUST come after a:hover in the CSS definition in order to be effective! 
+Pseudo-class names are not case-sensitive.
+
+Selector              Example                     Example description
+:active               a:active                    Selects the active link
+:checked              input:checked               Selects every checked <input> element
+:disabled             input:disabled              Selects every disabled <input> element
+:empty                p:empty                     Selects every <p> element that has no children
+:enabled              input:enabled               Selects every enabled <input> element
+:first-child          p:first-child               Selects every <p> elements that is the first child of its parent
+:first-of-type        p:first-of-type             Selects every <p> element that is the first <p> element of its parent
+:focus                input:focus                 Selects the <input> element that has focus
+:hover                a:hover                     Selects links on mouse over
+:in-range             input:in-range              Selects <input> elements with a value within a specified range
+:invalid              input:invalid               Selects all <input> elements with an invalid value
+:lang(language)       p:lang(it)                  Selects every <p> element with a lang attribute value starting with "it"
+:last-child           p:last-child                Selects every <p> elements that is the last child of its parent
+:last-of-type         p:last-of-type              Selects every <p> element that is the last <p> element of its parent
+:link                 a:link                      Selects all unvisited links
+:not(selector)        :not(p)                     Selects every element that is not a <p> element
+:nth-child(n)         p:nth-child(2)              Selects every <p> element that is the second child of its parent
+:nth-last-child(n)    p:nth-last-child(2)         Selects every <p> element that is the second child of its parent, counting from the last child
+:nth-last-of-type(n)  p:nth-last-of-type(2)       Selects every <p> element that is the second <p> element of its parent, counting from the last child
+:nth-of-type(n)       p:nth-of-type(2)            Selects every <p> element that is the second <p> element of its parent
+:only-of-type         p:only-of-type              Selects every <p> element that is the only <p> element of its parent
+:only-child           p:only-child                Selects every <p> element that is the only child of its parent
+:optional             input:optional              Selects <input> elements with no "required" attribute
+:out-of-range         input:out-of-range          Selects <input> elements with a value outside a specified range
+:read-only            input:read-only             Selects <input> elements with a "readonly" attribute specified
+:read-write           input:read-write            Selects <input> elements with no "readonly" attribute
+:required             input:required              Selects <input> elements with a "required" attribute specified
+:root                 root                        Selects the document's root element
+:target               #news:target                Selects the current active #news element (clicked on a URL containing that anchor name)
+:valid                input:valid                 Selects all <input> elements with a valid value
+:visited              a:visited                   Selects all visited links
+
+-----------------------------------------------------------------------------------------------------------------
+
+What are Pseudo-Elements?
+  A CSS pseudo-element is used to style specified parts of an element.
+  For example, it can be used to:
+  Style the first letter, or line, of an element
+  Insert content before, or after, the content of an element
+
+  Notice the double colon notation - ::first-line versus :first-line
+  The double colon replaced the single-colon notation for pseudo-elements in CSS3. This was an attempt from W3C to distinguish between pseudo-classes and pseudo-elements.
+  The single-colon syntax was used for both pseudo-classes and pseudo-elements in CSS2 and CSS1.
+  For backward compatibility, the single-colon syntax is acceptable for CSS2 and CSS1 pseudo-elements.
+
+All CSS Pseudo Elements
+Selector              Example                     Example description
+::after               p::after                    Insert content after every <p> element
+::before              p::before                   Insert content before every <p> element
+::first-letter        p::first-letter             Selects the first letter of every <p> element
+::first-line          p::first-line               Selects the first line of every <p> element
+::selection           p::selection                Selects the portion of an element that is selected by a user
+*/

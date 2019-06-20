@@ -1,0 +1,94 @@
+@media only screen and (min-width: 768px) {
+    /*-----BODY -----*/
+    body {}
+    /*-----CONTAINER -----*/
+    .container {
+        margin-top: 100px;
+    }
+    /*-----HEADER -----*/
+    header {
+        height: 80px;
+    }
+    header .logo a {
+        top: 28px;
+        /*距离顶部的距离*/
+    }
+    .cd-dropdown-wrapper {
+        height: 24px;
+        margin: 28px 0 0 15px;
+        /*按钮的位置*/
+    }
+    .cd-dropdown {
+        /*主菜单*/
+        top: 81px;
+        /*距离顶部的距离*/
+    }
+    .cd-dropdown h2,
+    .cd-dropdown-content a,
+    .cd-dropdown-content ul a {
+        height: 60px;
+        line-height: 60px;
+    }
+    .cd-dropdown .cd-close {
+        top: 5px;
+    }
+    .cd-dropdown-content,
+    .cd-dropdown-content ul {
+        padding-top: 60px;
+        /*这个值要和上面title的高度一样，要不然就到它的下面去了*/
+    }
+    .cd-dropdown-content a,
+    .cd-dropdown-content ul a {
+        font-size: 0.18rem;
+    }
+    .mobile-cart-wrapper {
+        margin: 28px 0;
+        /*按钮的位置*/
+    }
+    .mobile-cart {
+        top: 80px;
+        /*距离顶部的距离*/
+    }
+    /*.mobile-cart div {
+        height: 60px;
+        line-height: 60px;
+        font-size: 18px;
+    }*/
+    .mobile-search-wrapper {
+        margin: 28px 15px;
+        /*按钮的位置*/
+    }
+    .mobile-search {
+        top: 80px;
+        /*距离顶部的距离*/
+    }
+    .mobile-search-form {
+        height: 60px;
+    }
+    .mobile-search-form .input-search {
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+    }
+    .mobile-search-form .btn-search {
+        width: 60px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+    }
+    /*-----NAVigation -----*/
+    /*-----CONTENT -----*/
+	.content {
+	/*padding-right: 0px;
+    padding-left: 0px;*/
+   /* margin-top: 80px;*/
+   /* margin-right: auto;
+    margin-left: auto;*/
+	}
+	.thumbnail {
+   
+    margin-right: 10px;
+    margin-left: 10px;
+	}
+    /*----- FOOTER -----*/
+}

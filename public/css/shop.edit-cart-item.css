@@ -1,0 +1,47 @@
+.content_100 {
+	width: 100%; /*将弹出层的宽度设为100%*/
+	max-width: none; /*用来覆盖 mobile-default.css 里面的 max-width: 1494px;*/
+	/*background-color: red;*/
+	/*overflow-y: hidden;
+	overflow-x: hidden;*/
+
+	min-height: 500px;  /*防止在没东西的时候，header 和 footer 靠的太近*/
+	
+	margin-left: auto;
+    margin-right: auto;
+    
+    background-color: #fff;
+    padding-bottom: 40px;
+
+}
+@media only screen and (min-width: 1025px) {
+	.content_100 {
+		min-height: 600px;
+		padding-right: 0px;
+		padding-left: 0px;
+		margin-top: 0px;
+		/*margin-right: auto;
+		margin-left: auto;*/
+	}
+}
+::-webkit-scrollbar {
+	display: none; /*隐藏滚动条*/
+}
+/*.row{
+    padding-right: 0;
+    padding-left: 0;
+}*/
+
+.product-qty-container{
+	margin-top: 10px;
+}
+
+.product-quality-label{
+	height:30px;
+	line-height: 30px;
+}
+.product-quality-select{
+	height:30px;
+	margin-left: 15px;
+}
+

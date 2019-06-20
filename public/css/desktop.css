@@ -1,0 +1,357 @@
+@media only screen and (min-width: 1025px) {
+    /*-----BODY -----*/
+    body {}
+    /*-----WRAPPER -----*/
+    .wrapper {}
+    /*-----CONTAINER -----*/
+    .container-fluid {
+        margin-top: 120px; /*大屏在这里控制内容的上下 margin 和 padding*/ /* header 100 + 间距 20 = 70*/
+    }
+    .content {
+        min-height: 600px;  /*防止在没东西的时候，header和footer靠的太近*/
+        /*margin-top: 50px;*/  /*这个值要和header的高度一样*/
+        /*padding-top: 40px;*//*顶部空出的距离*/
+    }
+
+    /*-----HEADER -----*/
+    header {
+        height: 100px;
+        padding: 0 20px;
+    }
+    header .logo a {
+        top: 20px;
+        /*距离顶部的距离*/
+    }
+    .logo a{  
+        margin-left: -90px;      
+        width: 180px;
+        height: 36px;
+        top: 13px;
+        background: url(../images/logo-desktop.png) no-repeat;
+    }
+    #desktop-nav{
+        display: block;
+    }
+    .mobile-cart-wrapper {
+        display: none;
+    }
+    .mobile-search-wrapper {
+        display: none;
+    }
+    .cd-dropdown-wrapper{
+        display: none;
+    }
+    .cd-dropdown{
+        display: none;
+    }
+    
+    .desktop-user-wrapper {
+        display: inline-block;
+        height: 14px;
+        float: right;
+        margin-top: 20px;
+        /*按钮的位置*/
+        margin-right: 150px;
+        color: #222222;  /*本来是 #2f2f2f*/
+    }
+    .desktop-user-trigger {
+        position: relative;
+        /*给下面的菜单做参考*/
+        margin-left: 20px;
+    }
+    .sign-in {}
+    .desktop-user-trigger i {
+        vertical-align: baseline;
+        position: relative;
+        top:1px;
+        font-size: 14px;
+    }
+    .desktop-user-trigger span {
+        display: inline-block;
+        margin-left: 6px;
+        vertical-align: baseline;
+        position: relative;
+        top:-1px;
+    }
+    .desktop-search-wrapper {
+        display: block;
+        /*前面已经隐藏*/
+    }
+    .desktop-search {
+        position: relative;
+        /*给下面的做参照*/
+        top: 15px;
+    }
+    .desktop-search input {
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 10px;
+        border: none;
+        outline: 0;
+        position: absolute;
+        top: 0;
+        right: 40px;
+        z-index: 9999;
+    }
+    .desktop-search button {
+        width: 40px;
+        height: 30px;
+        line-height: 30px;
+        border: none;
+        background: #c1b497;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .desktop-search .form-control:focus {
+        border: none;
+        outline: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .desktop-search input[type=text] {
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+    .desktop-search input[type=text]:focus {
+        width: 300px;
+        border: none;
+        outline: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    /*.navbar-form .form-control {
+        display: inline-block;
+        width: 80px;
+        vertical-align: middle;
+    }*/
+    
+    .desktop-cart-wrapper {
+        display: inline-block;
+
+        height: 14px;
+        float: right;
+        margin-top: 20px;
+        /*按钮的位置*/
+    }
+    .desktop-cart-trigger {
+        position: relative;
+        /*给下面的菜单做参考*/
+    }
+    .desktop-cart {
+        position: absolute;
+        top: 40px;
+        left: -140px;
+        z-index: 1000;
+        display: none;
+        background-color: #fff;
+        border-top: 4px solid #fff;
+        border-left: 0;
+        border-bottom: 0;
+        border-right: 0;
+        /*箭头下面的那条线*/
+        color: #222222;  /*本来是 #2f2f2f*/
+        /*float: left;
+      min-width: 160px;
+      padding: 5px 0;
+      margin: 2px 0 0;
+      font-size: 14px;
+      text-align: left;
+      list-style: none;
+      background-color: #fff;
+      -webkit-background-clip: padding-box;
+              background-clip: padding-box;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, .15);
+      border-radius: 4px;
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, .175);*/
+              
+    }
+    .desktop-cart .header-bag-title {
+        width: 300px;
+        /*line-height: 40px;
+        text-align: center;*/
+    }
+    /*.dropdown-inner{
+        width: 220px;
+    }*/
+    .bag {
+        display: inline-block;
+    }
+    .bag i {
+        display: inline-block;
+        /*font-size: 14px;
+        line-height: 14px;*/
+        /*vertical-align: center;*/
+    }
+    .bag span {
+        font-size: 14px;
+        line-height: 14px;
+        margin-left: 5px;
+        vertical-align: baseline;
+        position: relative;
+        top:-1px;
+    }
+    li.arrow-cart:before {
+        /* the pointer tip */
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        border: 5px solid transparent;
+        border-bottom-color: #fff;
+        /*箭头的颜色*/
+        /*left:50%;*/
+        top: -14px;
+        /*箭头的位置，负的越大越往上*/
+        /*margin-left: 50px;*/
+        left: 140px
+    }
+    .user {
+        /*font-size: 14 px;
+        width:220px;*/
+        /*text-align: center;
+        margin-top: 0 !important;
+        padding-bottom: 10px;*/
+        position: absolute;
+        top: 40px;
+        left: -105px;
+        /*z-index: 999999;*/
+        display: none;
+        background-color: #fff;
+        border-top: 4px solid #fff;
+        /*箭头下面的那条线*/
+        color: #222222;  /*本来是 #2f2f2f*/
+
+    }
+    .dropdown-menu{
+        z-index: 999999;
+    }
+
+    /*ul.user{
+        max-height:0px;
+        overflow:hidden;   
+        -webkit-transition:max-height 0.4s linear;
+        -moz-transition:max-height 0.4s linear;
+        transition:max-height 0.4s linear;
+
+    }
+    
+    .desktop-user-trigger:hover ul{
+        max-height: 400px;
+    }*/
+
+
+    .user li {
+        width: 220px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .user li a {
+        color: #222222;  /*本来是 #2f2f2f*/
+        font-size: 16px;
+    }
+    .user li i {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 14px;
+        vertical-align: top;
+    }
+    li.arrow-user:before {
+        /* the pointer tip */
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        border: 5px solid transparent;
+        border-bottom-color: #fff;
+        /*箭头的颜色*/
+        /*left:50%;*/
+        top: -14px;
+        /*箭头的位置，负的越大越往上*/
+        right:105px;
+       /* margin-left: 25px;*/
+    }
+
+    /*-----CONTENT -----*/
+    .content {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+    .thumbnail {
+    display: block;
+    /*padding: 4px;*/
+    /*保留*/
+    margin-bottom: 40px;
+    line-height: 1.42857143;
+    background-color: #ffffff;  /*本来是 #fffef7*/
+    /*border: 1px solid #ddd;*/
+    /*保留*/
+    /*border-radius: 4px;*/
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    margin-right: 20px;
+    margin-left: 20px;
+    }
+
+    .badge {
+        /*vertical-align: top;*/
+    }
+
+
+
+
+/*desktopNav css*/
+.head-v3{position:absolute;top:50px;left:0;z-index:9999;width:100%;min-width:1024px;font-size: 15px !important;/*height:1000px*/
+/*left: 50%;transform: translate(-50%, 0);*//*水平居中*/}
+.head-v3 .navigation-inner{/*margin:0 auto;*//*width:1360px;*/position:relative;}/*内部限定宽度*/
+.navigation-up{padding-top: 0;margin-left: auto;margin-right: auto}/*整个导航的背景100%*/
+.navigation-up .navigation-v3{width: 650px;/*整个导航条的宽度*/height: 50px;margin: 0 auto;/*background-color: pink*/}/*整个导航条*/
+.navigation-up .navigation-v3 ul{}
+
+.navigation-up .navigation-v3 .nav-up-selected{background: url("../images/arrow.png") no-repeat bottom center}
+.navigation-up .navigation-v3 .nav-up-selected-inpage{color:darkgoldenrod;}/*current*/
+.navigation-up .navigation-v3 li{float:left;}
+.navigation-up .navigation-v3 li a{padding:0 25px;color:#fff;display:inline-block;height:50px;line-height:50px;font-family:"microsoft yahei"}
+.navigation-up .navigation-v3 li a:hover{color:#c1b497;}
+    
+.navigation-down{position:absolute;top:50px;left:0px;/*绝对定位下的水平居中*/width:99%;left:0.5%;right:0.5%;z-index:9999}
+.navigation-down .nav-down-menu{width:100%;margin:0;background:#222;position:absolute;top:0px;opacity: 0.95}/*下拉菜单*/
+.navigation-down .nav-down-menu .navigation-down-inner{display: -webkit-flex;
+     -webkit-flex-direction: row;
+     -webkit-justify-content: center;/*margin:auto;*//*width:950px;*//*position:relative;left:50%*//*background:cadetblue;border:1px solid black*/}
+.navigation-down .nav-down-menu dl{float:left;margin:18px 80px 18px 0}
+.navigation-down .menu-1 dl{margin:20px 80px 40px 0}
+.navigation-down .menu-1 dt{font:normal 12px "microsoft yahei";color:#fff;padding-bottom:10px;/*border-bottom:1px solid #333;*/margin-bottom:10px;font-weight: bold;}
+.navigation-down .menu-1 dd{margin-top: 15px;}
+.navigation-down .menu-1 dd a{/*color:#666;背景是白的时候用666*/color:#fff;font:normal 12px/30px "microsoft yahei";}
+.navigation-down .menu-1 dd a:hover{color:#fff;text-decoration: underline;}
+.navigation-down .menu-2 dd a,.navigation-down .menu-3 dd a{color:#fff;font:normal 12px "microsoft yahei"}
+
+.bag-icon{
+    display: inline-block;
+    width:16px;
+    height:16px;
+    background: url(../images/bag-16x16.png) no-repeat;
+}
+.user-icon{
+    display: inline-block;
+    width:16px;
+    height:16px;
+    background: url(../images/user-16x16.png) no-repeat;
+}
+
+
+
+    
+
+}
+
+

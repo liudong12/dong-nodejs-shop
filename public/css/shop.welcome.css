@@ -1,0 +1,306 @@
+.container {   
+    padding-top: 0;/*顶部空出的距离*/
+}
+
+.promo-above-hero {
+    text-align: center;
+    width: 100%;
+    max-width: 1568px;
+    margin: auto;
+    color: #444;
+    padding-bottom: 5px;
+    display: none;
+}
+
+.promo-above-hero .text-wrapper {
+    background-color: #E2E3DD;
+    padding: 20px 0;
+}
+
+.promo-above-hero .promo-serif {
+    font-family: 'Monotype Garamond', "Times New Roman", serif;
+    font-size: 20px;
+    letter-spacing: .05em;
+    /*20x0.05=1px*/
+    font-weight: normal;
+    text-transform: uppercase;
+    position: relative;
+    margin: 0px 0 12px;
+    /*最后一个左省略*/
+}
+
+
+/*h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+    }*/
+
+.promo-above-hero h4 {
+    font-family: "Trade Gothic Condensed Bold", Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    text-align: center;
+    margin: 0 0;
+    color: #d2cbc2;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    color: #444;
+}
+
+.non-responsive-hero span.asterisk {
+    font-size: 30px;
+    line-height: 1;
+    margin-top: 2px;
+    vertical-align: top;
+    display: inline-block;
+    width: 0;
+}
+
+.promo-above-hero .arrow-cta-wrapper {
+    padding: 0;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.promo-above-hero .arrow-cta-wrapper a:first-of-type {
+    margin-left: 0;
+}
+
+.promo-above-hero a.arrow-cta {
+    color: #444;
+    margin: 0 0 0 32px;
+    text-decoration: none;
+    font-family: "Trade Gothic Bold", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: .05em;
+    display: inline-block;
+}
+
+.promo-above-hero span.arrow {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #444;
+    font-size: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -1px 0 2.4px 10px;
+}
+
+.promo-above-hero a.legal {
+    color: #444;
+}
+
+.promo-above-hero .message-legal {
+    font-family: 'Monotype Garamond', 'Times New Roman', Times, serif;
+    color: #444;
+    font-size: 13px;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    line-height: 16px;
+    left: 0;
+    right: 0;
+    margin: 0;
+}
+
+.promo-above-hero .message-legal span.use-code {
+    font-style: normal;
+    font-size: 15px;
+}
+
+.promo-above-hero span.use-code {
+    font-size: 15px;
+    font-style: normal;
+    font-family: 'Monotype Garamond', 'Times New Roman', Times, serif;
+}
+
+.hero {
+    position: relative;
+    display: none;
+}
+
+.hero img {
+    width: 100%;
+}
+
+.hero-content-wrapper {
+    /*bottom: 0;
+    font-size: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-left: 30px;
+    padding-right: 30px;*/
+    position: absolute;
+    /*font-size: 0;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    text-align: center;
+    /*水平居中*/
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    /*text-align: center;
+    z-index: 1;*/
+}
+
+.hero-content-centered {
+    /* display: inline-block;*/
+    /*垂直居中*/
+    /*vertical-align: middle;*/
+    /*垂直居中*/
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.hero-title {
+    color: #fff;
+    font-size: 40px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    /* position: relative;*/
+    text-transform: uppercase;
+    /*z-index: 25;*/
+    padding-left: 30px;
+    padding-right: 30px;
+    word-wrap: break-word;
+}
+
+.button-gold {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Futura-400-normal, Helvetica, Arial, san-serif;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 12px;
+    line-height: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #c1b497;
+    border-color: #c1b497;
+    color: #fff;
+    display: inline-block;
+}
+
+
+
+.tile {
+    position: relative;
+    margin: 1px auto;
+}
+
+.tile img {
+    width: 100%;
+}
+
+.tile-content-wrapper {
+    /*bottom: 0;
+    font-size: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-left: 30px;
+    padding-right: 30px;*/
+    position: absolute;
+    /*font-size: 0;*/
+   
+    bottom: 0;
+    left: 0;
+    
+    z-index: 5;
+    text-align: center;
+    /*水平居中*/
+    width: 100%;
+    padding:30px;
+    /*padding-left: 30px;
+    padding-right: 30px;*/
+    /*text-align: center;
+    z-index: 1;*/
+    background-color: #000;
+    /*opacity: 0.8;*/
+    background:rgba(0,0,0,0.8);
+}
+.tile-content-centered {
+     display: inline-block;
+    
+    width: 100%;
+    
+}
+.tile-title {
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 24px;
+    margin-bottom: 16px;
+    /* position: relative;*/
+    text-transform: uppercase;
+    /*z-index: 25;*/
+    /*padding-left: 30px;
+    padding-right: 30px;*/
+    word-wrap: break-word;
+}
+
+.button-tile {
+    padding-bottom: 12px;
+    padding-top: 12px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Futura-400-normal, Helvetica, Arial, san-serif;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 12px;
+    line-height: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #c1b497;
+    border-color: #c1b497;
+    color: #fff;
+    display: inline-block;
+    /*opacity: 1;
+    position: relative;
+    z-index: 9999;*/
+
+}
+.button-tile:first-of-type{
+    margin-right: 10px;
+}

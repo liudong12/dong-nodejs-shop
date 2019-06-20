@@ -1,0 +1,200 @@
+.container {
+    
+    margin-top: 0;
+}
+header{
+    /*position: static;*/
+}
+.back-to-top{
+    display: none;
+}
+.content {
+    
+    padding-bottom: 40px;
+    /*padding-top: 20px;*/
+    /*margin-right: 15px;
+    margin-left: 15px;*/
+    background-color: #ffffff;  /*本来是 #fffef7*/
+}
+.room-under-header{
+     width:100%;
+     height:50px;
+}
+.row{
+    padding-right: 15px;
+    padding-left: 15px;
+    /*background: blue;*/
+}
+
+/*......................................tab...................................*/
+
+.main-title{
+    width:100%;
+    /*max-width: 500px;
+    margin: 0 auto;*/
+    height:auto;
+    
+}
+.tab-nav{
+    margin:0;
+    height:50px;
+    padding:0;
+    border-bottom: 1px solid #8f8f8f;
+
+    
+}
+.tab-nav li{
+    margin:0;
+    padding:0;
+    width:50%;
+    height:50px;
+    float:left;
+    text-align:center;
+    line-height:50px;
+    list-style-type:none;
+    position: relative;
+    top:2px;
+    
+    
+}
+.tab-nav li a{
+  text-decoration: none;
+  color:#8f8f8f;
+  font-size: 14px;
+
+}
+.current{
+    border-bottom: 5px solid #2f2f2f;
+    color:#2f2f2f;
+}
+.current-a{
+    color:#2f2f2f !important;
+    font-weight: bold;
+}
+.tab-content{
+    height:auto;
+    width:100%;
+    margin-top:40px;
+}
+
+/*................................sign in  ..................................*/
+
+.email, .password{
+    width: 100%;
+    height:50px;
+    font-size: 16px;
+    line-height: 16px;
+    outline: none;
+    border:1px solid #8f8f8f;
+    padding:0 0 0 10px;
+}
+
+.signin-password-group{
+    margin-top: 20px;
+    position: relative;
+}
+.signin-email-group{
+    position: relative;
+}
+.email-label{
+    display: none;
+    position: absolute;
+    top:10px;
+    left:10px;
+    font-size: 12px;
+    line-height: 12px;
+}
+.password-label{
+    display: none;
+    position: absolute;
+    top:10px;
+    left:10px;
+    font-size: 12px;
+    line-height: 12px;
+}
+.btn-signin{
+    width: 100%;
+    height:50px;
+    margin-top:20px;
+     margin-bottom:20px;
+    font-size: 16px;
+}
+.btn-facebook{
+    width: 100%;
+    height:50px;
+    margin-top:20px;
+    font-size: 16px;
+    background-color: #565789;
+    color:#fff;
+}
+.forget-password{
+    display: block;
+    width: 100%;
+    height:60px;
+    margin-top:0;
+    font-size: 14px;
+    line-height: 60px;
+    text-align: center;
+    border-bottom:1px solid #8f8f8f;
+    
+}
+.forget-password a{
+    color: #8f8f8f;
+    text-decoration: underline;
+}
+.shop-terms{
+    display: block;
+    width: 100%;
+    
+    margin-top:20px;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: justify;
+    color: #8f8f8f;
+}
+.shop-terms a{
+    color: #8f8f8f;
+    text-decoration: underline;
+}
+.divider-or{
+    width: 100%;
+    height:1px;
+    text-align: center;
+}
+.divider-or span{
+
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 14px;
+    background: red;
+    position: relative;
+    top:-10px;
+    padding: 0 20px;
+    
+    color:#2f2f2f;
+    background-color: #ffffff;  /*本来是 #fffef7*/
+}
+.errors_container{
+    margin-bottom: 20px;
+}
+
+
+
+/*..............................sign up......................................*/
+.signup-password-group{
+    margin-top: 20px;
+    position: relative;
+}
+.signup-email-group{
+    position: relative;
+}
+
+@media only screen and (min-width: 1025px) {
+
+.content{
+    width:400px;
+    margin-top: 60px;
+    padding-bottom: 60px;
+}
+
+}

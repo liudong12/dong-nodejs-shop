@@ -1,0 +1,1385 @@
+@charset "UTF-8";
+
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+
+html {
+    /*-----Prevents iPhone from resizing in landscape mode -----*/
+    -webkit-text-size-adjust: none;
+    font-size: 625%;
+}
+
+
+/*----------- apply a natural box layout model to all elements --------------*/
+
+/*
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+*/
+
+
+
+/*----------- apply a natural box layout model to all elements --------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/*----- share 各个页面公用的样式-----*/
+
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+body {
+    /* font-size: 14px;*/
+    /*line-height: 1.42857143;*/
+    font-size: 0.16rem;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    color: #222222;  /*本来是 #2f2f2f*/
+    background-color: #fff;  /*本来是 #fffef7*/
+    word-wrap: break-word;
+    /*Allow long words to be able to break and wrap onto the next line:*/
+}
+
+a {
+    color: #fff;
+    text-decoration: none;  /*设置所有的链接默认没有下划线*/
+}
+
+img {
+    /*max-width: 100%;*/
+}
+
+input {
+    /*font-family: sans-serif;*/
+    font-size: 0.16rem;
+}
+
+
+/* remove “X” from search input field */
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+input[type=text]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input[type=text]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+
+
+/*-----CONTAINER -----*/
+
+.container-fluid { 
+    min-width: 320px;
+    /*background-color: #fff;*/
+    margin-top: 70px; /*在这里控制内容的上下 margin 和 padding*/ /* header 50 + 间距 20 = 70*/
+}
+
+
+
+/*-----HEADER -----*/
+
+header {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+    background-color: #222222;  /*本来是 #2f2f2f*/
+    color: #fff;
+}
+.header-wrap{ /*整个网页的宽度*/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1494px;
+}
+
+
+/*-----NAVigation 导航条-----*/
+
+.cd-dropdown-wrapper {
+    display: inline-block;
+    position: relative;
+    height: 20px;
+    margin: 15px 0 0 15px;
+    /*按钮的位置*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.cd-dropdown-trigger {
+    display: block;
+    position: relative;
+    /*padding: 0 36px 0 20px;*/
+    /*background-color: #111433;*/
+    color: #ffffff;
+    /* border-radius: 3px;*/
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    /*按钮的高度*/
+}
+
+.cd-dropdown-trigger i {
+    font-size: 20px;
+}
+
+.no-touch .cd-dropdown-trigger:hover {
+    /* background-color: #171b46;*/
+}
+
+
+/*.cd-dropdown-trigger::before, .cd-dropdown-trigger::after {*/
+
+
+/* this is the arrow inside the dropdown trigger*/
+
+
+/*content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
+  height: 2px;
+  width: 9px;
+  background: #ffffff;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: width 0.3s, -webkit-transform 0.3s;
+  -moz-transition: width 0.3s, -moz-transform 0.3s;
+  transition: width 0.3s, transform 0.3s;
+}
+.cd-dropdown-trigger::before {
+  right: 22px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.cd-dropdown-trigger::after {
+  right: 17px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}*/
+
+.cd-dropdown h2,
+.cd-dropdown-content a,
+.cd-dropdown-content ul a {
+    height: 50px;
+    line-height: 50px;
+}
+
+.cd-dropdown h2,
+.cd-dropdown-content a,
+.cd-dropdown-content ul a,
+.cd-dropdown-content .cd-divider {
+    padding: 0 20px;
+}
+
+.cd-dropdown {
+    /*主菜单*/
+    /*font-size: 16px !important;*/
+    position: fixed;
+    z-index: 9999;
+    top: 50px;
+    /*距离顶部的距离*/
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background-color: #222222;  /*本来是 #2f2f2f*/
+    color: #ffffff;
+    visibility: hidden;
+    /* Force Hardware Acceleration */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+    /*X表示从左边弹出，Y表示从右边弹出*/
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0.5s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0.5s;
+    transition: transform 0.5s 0s, visibility 0s 0.5s;
+    border-top: 1px solid #8f8f8f;
+    /*弹出菜单顶部的线*/
+}
+
+.cd-dropdown h2 {
+    /* dropdown title - mobile version only */
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    background-color: #222222;  /*本来是 #2f2f2f*/
+    border-bottom: 1px solid #8f8f8f;
+}
+
+.cd-dropdown .cd-close {
+    /* 'X' close icon - mobile version only */
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    height: 50px;
+    width: 50px;
+    /* image replacement */
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+}
+
+.cd-dropdown .cd-close::after,
+.cd-dropdown .cd-close::before {
+    /* this is the 'X' icon */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    height: 20px;
+    width: 2px;
+    background-color: #ffffff;
+}
+
+.cd-dropdown .cd-close::after {
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.cd-dropdown .cd-close::before {
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    -o-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+.cd-dropdown.dropdown-is-active {
+    /*弹出以后，弹出以前在cd-dropdown里面*/
+    visibility: visible;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0s;
+    transition: transform 0.5s 0s, visibility 0s 0s;
+}
+
+.cd-dropdown-content,
+.cd-dropdown-content ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /*因为上面空了50px*/
+}
+
+.cd-dropdown-content a,
+.cd-dropdown-content ul a {
+    display: block;
+    color: #ffffff;
+    /* truncate text with ellipsis if too long */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-top-width: 1px;
+    border-color: #8f8f8f;
+    border-style: solid;
+}
+
+.cd-dropdown-content:first-child a {
+    border-top: 5px solid red;
+}
+
+.cd-dropdown-content li:first-of-type > a,
+.cd-dropdown-content ul li:first-of-type > a {
+    border-top-width: 0;
+}
+
+.cd-dropdown-content li:last-of-type > a,
+.cd-dropdown-content ul li:last-of-type > a {
+    border-bottom-width: 1px;
+}
+
+.cd-dropdown-content .cd-divider,
+.cd-dropdown-content ul .cd-divider {
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
+    background-color: #000000; /*本来是 #333*/
+   /* font-size: 0.11rem;*/
+    /*font-weight: bold;
+    letter-spacing: 1px;
+    color: #585a70;
+    text-transform: uppercase;*/
+    height: 20px;
+}
+
+.cd-dropdown-content .cd-divider + li > a,
+.cd-dropdown-content ul .cd-divider + li > a {
+    border-top-width: 0;
+}
+
+.cd-dropdown-content a,
+.cd-dropdown-content .cd-search,
+.cd-dropdown-content .cd-divider,
+.cd-dropdown-content ul a,
+.cd-dropdown-content ul .cd-search,
+.cd-dropdown-content ul .cd-divider {
+    /* Force Hardware Acceleration */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    -moz-transition: opacity 0.3s, -moz-transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.cd-dropdown-content.is-hidden,
+.cd-dropdown-content ul.is-hidden {
+    /* push the secondary dropdown items to the right */
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.cd-dropdown-content.is-hidden > li > a,
+.cd-dropdown-content.is-hidden > li > .cd-search,
+.cd-dropdown-content.is-hidden > .cd-divider,
+.cd-dropdown-content.move-out > li > a,
+.cd-dropdown-content.move-out > li > .cd-search,
+.cd-dropdown-content.move-out > .cd-divider,
+.cd-dropdown-content ul.is-hidden > li > a,
+.cd-dropdown-content ul.is-hidden > li > .cd-search,
+.cd-dropdown-content ul.is-hidden > .cd-divider,
+.cd-dropdown-content ul.move-out > li > a,
+.cd-dropdown-content ul.move-out > li > .cd-search,
+.cd-dropdown-content ul.move-out > .cd-divider {
+    /* lower down the dropdown items opacity - when secondary dropdown slides in or for dropdown items hidden on the right */
+    opacity: 0;
+}
+
+.cd-dropdown-content.move-out > li > a,
+.cd-dropdown-content.move-out > li > .cd-search,
+.cd-dropdown-content.move-out > .cd-divider,
+.cd-dropdown-content ul.move-out > li > a,
+.cd-dropdown-content ul.move-out > li > .cd-search,
+.cd-dropdown-content ul.move-out > .cd-divider {
+    /* push the dropdown items to the left when secondary dropdown slides in */
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.dropdown-is-active .cd-dropdown-content,
+.dropdown-is-active .cd-dropdown-content ul {
+    -webkit-overflow-scrolling: touch;
+}
+
+.cd-dropdown-content .see-all a {
+    /* different style for the See all links */
+    /*color: red;本来是绿色*/
+    color: #ffffff;
+}
+
+.cd-dropdown-content .cd-dropdown-gallery .cd-dropdown-item,
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item {
+    /* items with picture (or icon) and title */
+    height: 80px;
+    line-height: 80px;
+}
+
+.cd-dropdown-content .cd-dropdown-gallery .cd-dropdown-item h3,
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item h3 {
+    /* truncate text with ellipsis if too long */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cd-dropdown-content .cd-dropdown-gallery .cd-dropdown-item {
+    padding-left: 90px;
+}
+
+.cd-dropdown-content .cd-dropdown-gallery img {
+    position: absolute;
+    display: block;
+    height: 40px;
+    width: auto;
+    left: 20px;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item {
+    padding-left: 75px;
+    position: relative;
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item p {
+    color: #222222; /*点击以后瞬间的颜色，本来是蓝色*/
+    font-size: 0.13rem;
+    /* hide description on small devices */
+    display: none;
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item::before {
+    /* item icon */
+    content: '';
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    margin-top: -20px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40px 40px;
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-1::before {
+    background-image: url("../img/nucleo-icon-1.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-2::before {
+    background-image: url("../img/nucleo-icon-2.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-3::before {
+    background-image: url("../img/nucleo-icon-3.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-4::before {
+    background-image: url("../img/nucleo-icon-4.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-5::before {
+    background-image: url("../img/nucleo-icon-5.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-6::before {
+    background-image: url("../img/nucleo-icon-6.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-7::before {
+    background-image: url("../img/nucleo-icon-7.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-8::before {
+    background-image: url("../img/nucleo-icon-8.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-9::before {
+    background-image: url("../img/nucleo-icon-9.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-10::before {
+    background-image: url("../img/nucleo-icon-10.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-11::before {
+    background-image: url("../img/nucleo-icon-11.svg");
+}
+
+.cd-dropdown-content .cd-dropdown-icons .cd-dropdown-item.item-12::before {
+    background-image: url("../img/nucleo-icon-12.svg");
+}
+
+.cd-search input[type="search"] {
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    background-color: #222222;  /*本来是 #242643*/  /*本来是 #2f2f2f*/
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+}
+
+.cd-search input[type="search"]::-webkit-input-placeholder {
+    color: #ffffff;
+}
+
+.cd-search input[type="search"]::-moz-placeholder {
+    color: #ffffff;
+}
+
+.cd-search input[type="search"]:-moz-placeholder {
+    color: #ffffff;
+}
+
+.cd-search input[type="search"]:-ms-input-placeholder {
+    color: #ffffff;
+}
+
+.cd-search input[type="search"]:focus {
+    background: #ffffff;
+    color: #222222; /*点击以后瞬间的颜色，本来是蓝色*/
+    outline: none;
+}
+
+.cd-search input[type="search"]:focus::-webkit-input-placeholder {
+    /*color: rgba(17, 20, 51, 0.4);*/ /*点击以后瞬间的颜色，本来是蓝色*/
+    color: #222222;
+}
+
+.cd-search input[type="search"]:focus::-moz-placeholder {
+    /*color: rgba(17, 20, 51, 0.4);*/
+    color: #222222;
+}
+
+.cd-search input[type="search"]:focus:-moz-placeholder {
+    /*color: rgba(17, 20, 51, 0.4);*/
+    color: #222222;
+}
+
+.cd-search input[type="search"]:focus:-ms-input-placeholder {
+    /*color: rgba(17, 20, 51, 0.4);*/
+    color: #222222;
+}
+
+.has-children > a,
+.go-back a {
+    position: relative;
+}
+
+.has-children > a::before,
+.has-children > a::after,
+.go-back a::before,
+.go-back a::after {
+    /* arrow icon in CSS - for element with nested unordered lists */
+    content: '';
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    display: inline-block;
+    height: 2px;
+    width: 10px;
+    background: #ffffff;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.has-children > a::before,
+.go-back a::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.has-children > a::after,
+.go-back a::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.has-children > a {
+    padding-right: 40px;
+}
+
+.has-children > a::before,
+.has-children > a::after {
+    /* arrow goes on the right side - children navigation */
+    right: 20px;
+    -webkit-transform-origin: 9px 50%;
+    -moz-transform-origin: 9px 50%;
+    -ms-transform-origin: 9px 50%;
+    -o-transform-origin: 9px 50%;
+    transform-origin: 9px 50%;
+}
+
+.cd-dropdown-content .go-back a {
+    padding-left: 40px;
+}
+
+.cd-dropdown-content .go-back a::before,
+.cd-dropdown-content .go-back a::after {
+    /* arrow goes on the left side - go back button */
+    left: 20px;
+    -webkit-transform-origin: 1px 50%;
+    -moz-transform-origin: 1px 50%;
+    -ms-transform-origin: 1px 50%;
+    -o-transform-origin: 1px 50%;
+    transform-origin: 1px 50%;
+}
+
+
+.no-js .cd-dropdown-wrapper:hover .cd-dropdown {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.no-js .cd-dropdown-wrapper .cd-close {
+    display: none;
+}
+
+
+.logo a{
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    /*宽的一半*/
+    width: 120px;
+    height: 24px;
+    top: 13px;
+    background: url("../images/logo-desktop.png") no-repeat;
+    -webkit-background-size:100%;
+    -moz-background-size:100%;
+    -ms-background-size:100%;
+    -o-background-size:100%;
+    background-size:100%;
+    text-indent: -9999em;
+    /*color:#c1b497;*/
+}
+.foot-logo a{
+    position: absolute;
+    left: 50%;
+    margin-left: -72px;
+    /*宽的一半*/
+    width: 144px;
+    height: 100px;
+    top: 0px;
+    background: url(../images/foot-logo.png) no-repeat;
+    -webkit-background-size:100%;
+    -moz-background-size:100%;
+    -ms-background-size:100%;
+    -o-background-size:100%;
+    background-size:100%;
+    text-indent: -9999em;
+    /*color:#c1b497;*/
+}
+/*header .logo a {
+    
+    用logo做背景
+         
+  text-indent: -9999em;
+  overflow: hidden;
+  background-size: 100px auto;
+  background-image: url('/_ui/responsive/common/images/small-2x-s1fc3155a58.png');
+  background-position: 0 -50px;
+  background-repeat: no-repeat;
+  
+}*/
+
+.mobile-cart-wrapper {
+    /*width:20px;*/
+    /*padding:0 5px;*/
+    display: inline-block;
+    height: 20px;
+    float: right;
+    margin: 15px 5px;
+    /*按钮的位置*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mobile-cart-trigger {
+    display: block;
+    position: relative;
+    /*padding: 0 36px 0 20px;*/
+    /*background-color: #111433;*/
+    color: #ffffff;
+    /* border-radius: 3px;*/
+    /*width: 20px;*/
+    height: 20px;
+    line-height: 20px;
+    /*按钮的高度*/
+}
+
+.mobile-cart-trigger i {
+    font-size: 20px;
+}
+
+.mobile-cart-trigger span {
+    /*display: none;*/
+}
+
+.mobile-cart {
+    position: fixed;
+    z-index: 9998;
+    top: 50px;
+    /*距离顶部的距离*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    background-color: #ffffff;
+    color: #222222;  /*本来是 #2f2f2f*/
+    visibility: hidden;
+    /* Force Hardware Acceleration */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    /*X表示从左边弹出，Y表示从右边弹出*/
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0.5s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0.5s;
+    transition: transform 0.5s 0s, visibility 0s 0.5s;
+}
+
+/*.mobile-cart li {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #fff;
+    color: #2f2f2f;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+}*/
+
+.mobile-cart div:first-child {
+    border-bottom: 1px solid #8f8f8f;
+}
+
+
+
+.mobile-cart.mobile-cart-is-active {
+    visibility: visible;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0s;
+    transition: transform 0.5s 0s, visibility 0s 0s;
+}
+
+.desktop-cart-wrapper {
+    display: none;
+}
+
+.mobile-search-wrapper {
+    display: inline-block;
+    height: 20px;
+    float: right;
+    margin: 15px 15px;
+    margin-left: 5px;
+    /*按钮的位置*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mobile-search-trigger {
+    display: block;
+    position: relative;
+    /*padding: 0 36px 0 20px;*/
+    /*background-color: #111433;*/
+    color: #ffffff;
+    /* border-radius: 3px;*/
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    /*按钮的高度*/
+}
+
+.mobile-search-trigger i {
+    font-size: 20px;
+}
+
+.mobile-search-trigger span {
+    display: none;
+}
+
+.mobile-search {
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    /*距离顶部的距离*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    background-color: #fff;
+    color: #222222;  /*本来是 #2f2f2f*/
+    visibility: hidden;
+    /* Force Hardware Acceleration */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    /*X表示从左边弹出，Y表示从右边弹出*/
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0.5s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0.5s;
+    transition: transform 0.5s 0s, visibility 0s 0.5s;
+}
+
+.mobile-search-form {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 50px;
+}
+
+.mobile-search-form .input-search {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    padding-left: 15px;
+    border: none;
+    outline: none;
+}
+
+.mobile-search-form .input-search:active {
+    border: none;
+    outline: none;
+}
+
+.mobile-search-form .btn-search {
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #333;
+    outline: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.mobile-search.mobile-search-is-active {
+    visibility: visible;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0s;
+    -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0s;
+    transition: transform 0.5s 0s, visibility 0s 0s;
+}
+
+.user-wrapper {
+    display: none;
+}
+
+.desktop-search-wrapper {
+    display: none;
+}
+
+.desktop-user-wrapper {
+    display: none;
+}
+#desktop-nav{
+    display: none;
+}
+
+
+/*购物车下来菜单*/
+
+.header-bag-title, .header-bag-empty{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+/*.header-bag-title{
+    font-size: 16px;
+}
+.header-bag-empty{
+    font-size: 16px;
+}*/
+
+.dropdown-inner {
+    max-height: 260px;
+    overflow-y: scroll;
+    /*overflow-x: scroll;*/
+    /*overflow-x: hidden;*/
+     padding:15px;
+}
+.header-cart-item {
+  display: block;
+  width: 100%;
+  height: 200px;
+  padding:0 0;
+}
+.header-cart-item  .img-responsive {
+  float: left;
+    width: 160px;
+    height: 160px;
+    height: auto;
+    /*float:left;*/
+    
+     
+}
+.header-cart-item-info  {
+  float: right;
+    width: calc(100% - 160px);
+    height: 160px;
+    vertical-align: top;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+   
+    color:#222222;  /*本来是 #2f2f2f*/
+   
+}
+.header-cart-item-title{
+  font-weight: bold;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+.header-cart-item-sku{
+  margin-top: 10px;
+  font-size: 14px;
+}
+.header-cart-item-qty{
+  margin-top: 10px;
+  font-size: 14px;
+}
+.header-cart-item-price{
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+.header-bag-subtotal{
+  height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+.header-bag-subtotal .sub-total{
+  float:left;
+
+
+}
+.header-bag-subtotal .sub-total-amount{
+float: right;
+}
+
+.header-bag-checkout{
+  /*height: 100px;*/
+  
+  padding:15px 15px;
+}
+.header-checkout-btn{
+  
+  width: 100%;
+    line-height: 30px;
+margin-bottom: 15px;
+
+}
+.header-details-btn{
+  
+  width: 100%;
+    line-height: 30px;
+    
+
+}
+
+
+
+
+
+
+
+
+ul,
+li {
+    list-style-type: none;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    line-height: 1px;
+    margin:0;
+    overflow: hidden;
+    background-color: #8f8f8f;
+}
+.dropdown-inner .divider{
+  margin-top:15px;
+    margin-bottom: 15px;
+}
+
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    /*padding: 3px 7px;*/
+    /* font-size: 12px;*/
+    /* font-weight: bold;*/
+    /*line-height: 1;*/
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    /*vertical-align: baseline;*/
+   /* position: relative;
+    top:3px;*/
+    /*font-size: 14px;*/
+    /*background-color: #777;*/
+    /*border-radius: 10px;*/
+    /*background: transparent;
+  color:#c1b497;
+  position: absolute;
+  top:12px;
+  left:60px;*/
+}
+
+.badge:empty {
+    display: none;
+}
+
+
+/*-----CONTENT -----*/
+
+.content {
+    min-height: 500px;  /*防止在没东西的时候，header 和 footer 靠的太近*/
+}
+
+.content {
+    /*min-height: 5em;*/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1494px;
+    /*max-width: 1170px;*/
+    /*超过以后就不再拉伸了*/
+    /*超过以后才能看到外层的wrapper*/
+    /*border:1px solid #000;*/
+    /*margin-top: 50px;*/  /*这个值要和header的高度一样*/
+    /*padding-top: 40px;*//*顶部空出的距离*/
+
+   
+}
+
+
+/*----- FOOTER -----*/
+
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: #222222;  /*本来是 #2f2f2f*/
+    color: #fff;
+    clear: both;
+    text-align: center;
+    /* padding: 0.15rem;*/
+}
+.footer-info{
+    font-size: 24px;
+   
+    position: relative;
+    top:20px;
+
+}
+.footer-info-dongdong{
+     margin: 0 auto;
+width:150px;
+background: red;
+}
+.footer-info-trading{
+     margin: 0 auto;
+    margin-top: 10px;
+font-size: 12px;
+width:150px;
+background: red;
+
+}
+
+.back-to-top {
+    width: 100%;
+    font-size: 16px;
+    line-height: 50px;
+    /* padding: 20px auto;*/
+    background-color: #333;
+}
+
+
+
+
+
+
+
+/*公用*/
+.loading{
+    width:214px;
+    height:214px;
+    display: none;
+    background: url(../images/loading.gif) no-repeat;
+
+    /*水平垂直居中*/
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
+
+.errors_container {
+    color: #a94442;
+    background-color: #f2dede;
+    /*border-color: #ebccd1;*/
+    border: 1px solid #ebccd1;
+    /*margin: 5px;*/
+    padding: 10px;
+    font-size: 14px;
+}
+.errors_container h4{
+    margin-bottom: 10px;
+    /*margin-left: 20px;*/
+}
+.errors_container ol li {
+    /*list-style-type: disc;*/
+    margin:5px 0;
+    /*margin-left: 20px;*/
+}
+.errors_container {
+    display: none
+}
+.errors_container label.error {
+    display: inline;
+}
+
+.backend-errors_container ol li {
+    /*list-style-type: disc;*/
+    margin:5px 0;
+    /*margin-left: 20px;*/
+}
+
+
+
+/*统一下拉框样式*/
+
+select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 1px #000;
+
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+  /*background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right 15px center transparent;*/
+  background: url("../images/down-arrow.png") no-repeat scroll right 15px center transparent;
+
+
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 15px;
+
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+
+.add-smooth-underline {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+}
+.add-smooth-underline:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+.add-smooth-underline:hover:after {
+    width: 100%;
+    background: #000;
+    color:#000;
+}
+
+/* BOTTOM TO TOP */
+/*.add-smooth-underline {
+    display: inline-block;
+    position: relative;
+}
+.add-smooth-underline:after {
+    content: '';
+    position: absolute;
+    bottom: -3;
+    left: 0;
+    height: 0px;
+    width: 100%;
+    background: transparent;
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+}
+.add-smooth-underline:hover:after {
+    height: 1px;
+    background: #000;
+}*/
+
+.user-icon{
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background: url(../images/user-20x20.png) no-repeat;
+}
+.bag-icon{
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background: url(../images/bag-20x20.png) no-repeat;
+}
+.search-icon{
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background: url(../images/search-20x20.png) no-repeat;
+}
+.menu-icon{
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background: url(../images/menu-20x20.png) no-repeat;
+}
+input:text, select{  /*checkbox 用了appearance : none; 以后，勾选就看不到钩子了。所以要用:text限定一下*/
+    -webkit-appearance : none; /*去除IOS下input元素的内阴影*/
+    border-radius:0; /*去除IOS下input元素的圆角*/
+}
+input{
+    border-radius:0; /*去除IOS下input元素的圆角*/
+    outline-color: invert ;  
+    outline-style: none ;  
+    outline-width: 0px ;  
+    /*border: none ;*/  
+    border-style: none ;  
+    text-shadow: none ;  
+    /*-webkit-appearance: none ;*/  
+    -webkit-user-select: text ;  
+    outline-color: transparent ;  
+    box-shadow: none;  
+
+    border:1px solid #8f8f8f;
+}
+
+
+
+
+
+

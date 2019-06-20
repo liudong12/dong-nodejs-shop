@@ -1,0 +1,114 @@
+/*@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+  }*/
+
+.content {
+  width: 100%;
+    padding-right: 2px;
+    padding-left: 2px;
+    /*padding-top: 20px;*/
+    margin-right: auto;
+    margin-left: auto;
+    height:auto;
+    /*background-color: red;*/
+}
+
+.caption {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #777;
+    text-align: left;
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-thumbnail {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.thumbnail {
+    display: block;
+    /*padding: 4px;*/
+    /*保留*/
+    margin-bottom: 40px;
+    line-height: 1.42857143;
+    background-color: #ffffff; /*本来是 #fffef7*/
+    /*border: 1px solid #ddd;*/
+    /*保留*/
+    /*border-radius: 4px;*/
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.thumbnail > img,
+.thumbnail a > img {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+    border-color: #337ab7;
+}
+
+.thumbnail .caption {
+    /*padding: 9px;*/
+    /*保留*/
+    color: #333;
+}
+
+.margin-right {
+    margin-right: 2px;
+}
+
+.margin-left {
+    margin-left: 2px;
+}
+
+.caption-title {
+    color: #2f2f2f;
+    height: 44px;/*每个都是2行，要不然因为是浮动的，当左边是2行，右边1行时，左边下面的位置会空出来*/
+}
+
+.caption-price {
+    margin-top: 15px;
+}
+
+
+
+

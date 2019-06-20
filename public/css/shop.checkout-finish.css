@@ -1,0 +1,138 @@
+.container {
+    /*margin-top: 50px;*/
+}
+
+header {
+    /*position: relative;*/
+}
+
+.back-to-top {
+    display: none;
+}
+
+.content {
+    
+}
+
+.row {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.checkout-finish-h1 {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #222222;  /*本来是 #2f2f2f*/
+    /*margin-bottom: 20px;*/
+}
+
+.order-details-container {
+    border-top: 1px solid #2f2f2f;
+    border-bottom: 1px solid #2f2f2f;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+}
+
+
+.order-summary,
+.order-details{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.icon {
+    /*background:url('{{URL::to('images/bullets.png')}}') right center no-repeat;*/
+    background: url(../../src/images/bullets.png) no-repeat;
+    width: 12px;
+    height: 12px;
+    float: right;   
+    position: relative;
+    right: 0;
+    top: 20px;
+}
+
+.opened .icon {
+    background-position: left bottom;
+}
+.order-summary-section{
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+.order-details-section {
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+}
+
+.order-summary-section table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.order-summary-section table tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+.order-summary-section table tbody tr {
+    display: table-row;
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.order-summary-section table tbody tr th {
+    text-align: left;
+    vertical-align: top;
+    width: 50%;
+}
+
+.order-summary-section table tbody td {
+    text-align: right;
+    vertical-align: top;
+    width: 50%;
+}
+
+.order-summary-section table tbody th a {
+    color: #2f2f2f;
+    text-decoration: underline;
+}
+
+.order-summary-section p {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 10px auto;
+}
+
+.order-summary-section p span {
+    float: right;
+}
+
+.order-details-section .dropdown-inner { /*这里必须要加 .order-details-section， 要不然头部的购物车下来餐单就没padding了*/
+    padding: 0;
+}
+
+@media only screen and (min-width: 1025px) {
+
+    .content {
+        width:1024px;
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+    /*.checkout-finish-title{
+        border: none;
+        width: 60%;
+        float:left;
+    }*/
+    
+    
+}
