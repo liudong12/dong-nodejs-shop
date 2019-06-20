@@ -1,0 +1,502 @@
+<div class="content">{{!-- {{page}} --}}
+    {{#ifCond page "==" "my-info"}}
+        <ul class="tab-nav">                   
+            <li class="current" name="basic">
+                <a href="/user/profile?page=my-info" class="tab-a current-a">MY INFO</a>
+            </li> 
+            <li name="content">
+                <a href="/user/profile?page=my-order" class="tab-a">MY ORDER</a>
+            </li>                                                      
+        </ul>
+    {{/ifCond}}
+    {{#ifCond page "==" "my-order"}}
+        <ul class="tab-nav">                   
+            <li name="basic">
+                <a href="/user/profile?page=my-info" class="tab-a">MY INFO</a>
+            </li> 
+            <li class="current" name="content">
+                <a href="/user/profile?page=my-order" class="tab-a current-a">MY ORDER</a>
+            </li>                                                      
+        </ul>
+    {{/ifCond}}
+    {{#ifCond page "==" "order-details"}}
+        <ul class="tab-nav">                   
+            <li name="basic">
+                <a href="/user/profile?page=my-info" class="tab-a">MY INFO</a>
+            </li> 
+            <li class="current" name="content">
+                <a href="/user/profile?page=my-order" class="tab-a current-a">MY ORDER</a>
+            </li>                                                      
+        </ul>
+    {{/ifCond}}
+
+    {{#ifCond page "==" "my-info"}}
+        <div class="tab-content">
+            <div class="row">
+                <div class="my-info">
+                    <div class="my-info-header">
+                        <h4>MY INFO</h4>
+                        <a id="my-info-edit">EDIT</a>
+                    </div>
+
+                    {{!-- 前端验证错误提示区 --}}
+                    <div class="errors_container">
+                        {{!-- <h4>Error Message:</h4> --}}
+                        <ol></ol>
+                    </div>
+
+                    {{!-- 后端验证错误提示区 --}}
+                    {{!-- 如果有错误的话，这个页面就会被传入$errors 数组类型 --}}
+                    
+                        <div class="alert alert-danger backend-errors-container">
+                            {{#if hasErrors}}
+                                <div class="alert alert-danger">
+                                    {{#each errorMessages}}
+                                        <p>{{ this }}</p>
+                                    {{/each}}
+                                </div>
+                            {{/if}}
+                        </div>
+                    
+
+                    <form action="/user/profile" method="post" id="edit-my-info" onsubmit="return false;">
+                        <div class="my-info-content">
+                            <ul class="my-info-content-wrap">
+                                <li class="my-info-firstname-group my-info-content-li">
+                                    <label for="my-info-firstname-input" class="my-info-firstname-label">
+                                        <span>FIRST NAME</span>
+                                    </label>
+                                    <input id="my-info-firstname-input" class="my-info-input" name="firstname" value="{{user.firstName}}" type="text" disabled="disabled">
+                                    
+                                </li>
+                                <li class="my-info-gender-group my-info-content-li">
+                                    {{!-- <label for="my-info-gender-input" class="my-info-gender-label">
+                                        <span>GENDER</span>
+                                    </label>
+                                    <input id="my-info-gender-input" class="my-info-input" name="gender" value="{{$user->gender}}" type="text" disabled="disabled"> --}}
+
+                                    <label for="my-info-gender-input" class="my-info-gender-label">
+                                        <span>GENDER</span>
+                                    </label>                               
+                                    <select id="my-info-gender-input" class="my-info-input" name="gender" value="{{user.gender}}" disabled="disabled">
+                                        <option>{{!-- Exp Month --}}</option>
+                                        <option value="0" {{#ifCond user.gender "==" 0}} selected {{/ifCond}}>Male</option>
+                                        <option value="1" {{#ifCond user.gender "==" 1}} selected {{/ifCond}}>Female</option>
+                                        <option value="2" {{#ifCond user.gender "==" 2}} selected {{/ifCond}}>I don't want to say</option>                               
+                                    </select>               
+                
+                                </li>
+                                <li class="my-info-email-group my-info-content-li">
+                                    <label for="my-info-email-input" class="my-info-email-label">
+                                        <span>EMAIL</span>
+                                    </label>
+                                    <input id="my-info-email-input" class="my-info-input" name="email" value="{{user.email}}" type="text" disabled="disabled">
+                                </li>
+                                <li class="my-info-password-group my-info-content-li">
+                                    <label for="my-info-password-input" class="my-info-password-label">
+                                        <span>PASSWORD</span>
+                                    </label>
+                                    <span class="show-password">show</span>
+                                    <input id="my-info-password-input" class="my-info-input" name="password" value="{{decryptPasswordCrypto user}}" type="password" disabled="disabled">
+                                </li>
+                                    {{!--user.password --显示 hashed password--}}
+                                    {{!--user.decryptPasswordCrypto(password) --显示 解密以后的 password。备用--}}
+                                    {{!--decryptPasswordCrypto user --用 helper 来显示 解密以后的 password。备用--}}
+                                    {{!-- 一共要改3处，还有2处在passport.js里面。记的先要导入crypto模块 --}}
+                                    {{!-- 方法是写在user.js里面的 --}}                           
+                            </ul>
+                            <ul class="my-info-content-wrap">                           
+                                <li class="my-info-lastname-group my-info-content-li">
+                                    <label for="my-info-lastname-input" class="my-info-lastname-label">
+                                        <span>LAST NAME</span>
+                                    </label>
+                                    <input id="my-info-lastname-input" class="my-info-input" name="lastname" value="{{user.lastName}}" type="text" disabled="disabled">
+                                </li>
+                                <li class="my-info-birthday-group my-info-content-li">
+                                    <label for="my-info-birthday-input" class="my-info-birthday-label">
+                                        <span>BIRTHDAY</span>
+                                    </label>
+                                    <input id="my-info-birthday-input" class="my-info-input" name="birthday" value="" type="text" disabled="disabled">
+                                </li>
+                                <li class="my-info-phone-group my-info-content-li">
+                                    <label for="my-info-phone-input" class="my-info-phone-label">
+                                        <span>PHONE</span>
+                                    </label>
+                                    <input id="my-info-phone-input" class="my-info-input" name="phone" value="" type="text" disabled="disabled">
+                                </li>
+                                <li class="my-info-phone-group my-info-content-li">
+                                    <label for="my-info-phone-input" class="my-info-phone-label">
+                                        <span>PHONE</span>
+                                    </label>
+                                    <input id="my-info-phone-input" class="my-info-input" name="phone" value="" type="text" disabled="disabled">
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}" >
+                        <button type="submit" class="btn btn-success btn-edit-my-info">SAVE</button>
+                    </form>                 
+                </div>
+            </div>              
+        </div>
+    {{/ifCond}}
+    {{#ifCond page "==" "my-order"}}                 
+        <div class="tab-content">
+            <div class="row">
+                <div class="my-order-history-desktop">
+                    <div class="my-orders-header">
+                        <h4>MY ORDERS</h4>                  
+                    </div>
+                    {{!-- <div class="orders-title h4">
+                        My Orders
+                    </div> --}}
+
+                    {{!-- <div class="orders-description l4">
+                        Track your orders and view your shipping history
+                    </div> --}}
+                    <div class="order-set-wrap">
+                        <table class="order-set" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <td class="order-set-header">
+                                        Date</td>
+                                    <td class="order-set-header">
+                                        Order Number</td>
+                                    <td class="order-set-header">
+                                        Order Total</td>
+                                    <td class="order-set-header">
+                                        Status</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </thead>
+                            {{#each myOrders }}
+                                <tbody>
+                                    <tr class="order">
+                                        <td class="order-set-cell">
+                                            {{!-- 11/02/16  --}} {{getDate this.created_at}}
+                                        </td>
+                                        <td class="order-set-cell">
+                                            <a title="" class="cta3 add-smooth-underline" href="/user/profile?page=order-details&orderSn={{this.order_sn}}">{{!-- 2791519 --}} {{this.order_sn}}</a>
+                                        </td>
+                                        <td class="order-set-cell">
+                                            {{!-- $358.45 --}}  $&nbsp{{this.merchandise_total}}
+                                        </td>
+                                        <td class="order-set-cell">
+                                            {{!-- Order Shipped --}}  {{this.order_status}}
+                                        </td>
+                                        <td class="order-set-cell" width="70">
+                                            <a title="" class="atg_store_basicButton cta3 add-smooth-underline" href="/user/profile?page=order-details&orderSn={{this.order_sn}}"><span>VIEW</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            {{/each}}                    
+                        </table>
+                    </div>
+                </div>
+                {{#each myOrders }}
+                    <div class="my-order-history">
+                        <div class="my-orders-header">
+                            <h4>ORDER:&nbsp {{this.order_sn}}</h4>                 
+                        </div>
+                        <div class="order-set-wrap">                            
+                            <div class="order-set-top">
+                                <div class="status-group">
+                                    <div class="order-set-cell order-set-field">Status:</div>
+                                    <div class="order-set-cell order-set-value">
+                                        {{this.order_status}}
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="placed-group">
+                                    <div class="order-set-cell order-set-field">Placed:</div>
+                                    <div class="order-set-cell order-set-value">
+                                        {{getDate this.created_at}}
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="est-delivery-group">
+                                    <div class="order-set-cell order-set-field">Est. Delivery:</div>
+                                    <div class="order-set-cell order-set-value">
+                                        {{getDate this.created_at}}
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="order-total-group">
+                                    <div class="order-set-cell order-set-field">Order Total:</div>
+                                    <div class="order-set-cell order-set-value">$&nbsp{{this.merchandise_total}}</div>
+                                    <div class="clearfix"></div>
+                                </div>  
+                            </div>
+                            <div class="order-set-bottom">
+                                <div> 
+                                    <a class="btn btn-success btn-view-order-details" href="/user/profile?page=order-details&orderSn={{this.order_sn}}">View Order Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    {{/ifCond}}
+    {{#ifCond page "==" "order-details"}}  
+        <div class="row">
+            <div class="tab-content">
+                <div class="my-order-history">
+                    <div class="my-orders-header">
+                        <h4>ORDER:&nbsp {{myOrder.order_sn}}</h4>                 
+                    </div>
+                    <div class="order-set-wrap">                            
+                        <div class="order-set-top">
+                            <div class="status-group">
+                                <div class="order-set-cell order-set-field">Status:</div>
+                                <div class="order-set-cell order-set-value">
+                                    {{myOrder.order_status}}
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="placed-group">
+                                <div class="order-set-cell order-set-field">Placed:</div>
+                                <div class="order-set-cell order-set-value">
+                                    {{getDate myOrder.created_at}}
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="est-delivery-group">
+                                <div class="order-set-cell order-set-field">Est. Delivery:</div>
+                                <div class="order-set-cell order-set-value">
+                                    {{getDate myOrder.created_at}}
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="order-total-group">
+                                <div class="order-set-cell order-set-field">Order Total:</div>
+                                <div class="order-set-cell order-set-value">$&nbsp{{myOrder.merchandise_total}}</div>
+                                <div class="clearfix"></div>
+                            </div>  
+                        </div>
+                        <div class="order-set-bottom">
+                            <div>
+                                <a class="btn btn-success btn-view-order-details" href="">Track My Order</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+            <div class="order-summary-container">
+                <div class="order-summary folding">ORDER SUMMARY<span class="icon"></span></div>
+                <div class="order-summary-section">             
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Merchandise Total</th>
+                                <td>$&nbsp{{myOrder.merchandise_total}}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping & Handling<br>Standard</th>
+                                <td>$&nbsp5.00</td>
+                            </tr>
+                            <tr>
+                                
+                            </tr>
+                            <tr>
+                                <th class="bold">ORDER TOTAL</th>
+                                <td class="bold">$&nbsp{{myOrder.merchandise_total}}</td>
+                            </tr>
+                            <tr>
+                                <th ><a href="">Shipping & Handling</a></th>
+                                <td ></td>
+                            </tr>
+                        </tbody>
+                    </table>                  
+                </div>
+            </div>
+            <div class="order-details-container">
+                <div class="order-details folding">ORDER DETAILS <span class="icon"></span></div>
+                
+                <div class="order-details-section">
+                    <ul>                            
+                        {{#if myOrder}}
+
+                            <div class="dropdown-inner">
+
+                                {{#each productsInThisOrder}}
+                                    <li>
+                                        <a href="" class="header-cart-item">
+                                            <img src="{{this.smallRetinaImageUrl}}" alt="..." class="img-responsive">
+                                            <div class="header-cart-item-info">
+                                                <ul class="header-cart-item-details">
+                                                    <li class="header-cart-item-title">
+                                                        {{this.title}}
+                                                    </li>
+                                                    <li class="header-cart-item-qty">
+                                                        Quality:&nbsp{{this.qty}}
+                                                    </li>
+                                                    <li class="header-cart-item-price">
+                                                        Price:&nbsp${{this.price}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    {{!-- 最后一个不加线 --}}
+                                    {{#if @last}}
+                                                                                                                                                                
+                                    {{else}}
+                                        <li class="divider"></li>
+                                    {{/if}}
+                                {{/each}}
+                            </div>                              
+                        {{else}}
+                            <li class="header-bag-empty">Currently empty</li>
+                        {{/if}}         
+                     </ul>                      
+                </div>
+            </div>
+            <div class="shipping-container">
+                <div class="shipping folding">
+                    SHIPPING <span class="icon"></span>
+                </div>
+                
+                <div class="shipping-section">
+                    <dl>
+                        <dt>SHIPPING TO</dt>
+                        <dd>{{myOrder.shipping_first_name}}&nbsp{{myOrder.shipping_last_name}}</dd>
+                        <dd>{{myOrder.shipping_address}}</dd>
+                        <dd>{{myOrder.shipping_city}},&nbsp{{myOrder.shipping_state}}&nbsp{{myOrder.shipping_zip}}</dd>
+                        <dd>U.S.A</dd>
+                    </dl>
+
+                    <dl>
+                        <dt>SHIPPING TYPE</dt>
+                        <dd>standard</dd>
+                    </dl>
+                </div>
+            </div>   
+            <div class="shipping-container">
+                <div class="shipping folding">
+                    BILLING <span class="icon"></span>
+                </div>                                  
+                <div class="shipping-section">
+                    <dl>
+                        <dt>BILL TO</dt>
+                        <dd>{{myOrder.billing_first_name}}&nbsp{{myOrder.billing_last_name}}</dd>
+                        <dd>{{myOrder.billing_address}}</dd>
+                        <dd>{{myOrder.billing_city}},&nbsp{{myOrder.billing_state}}&nbsp{{myOrder.billing_zip}}</dd>
+                        <dd>U.S.A</dd>
+                    </dl>
+
+                    <dl>
+                        <dt>CARD TYPE</dt>
+                        <dd>{{myOrder.card_number}}</dd>
+                    </dl>
+                </div>
+            </div>           
+        </div>
+    {{/ifCond}}
+</div>
+
+{{!--
+通过 orderSn 来查找，然后返回一个数组 叫 order，但是这个数组只有一个元素，因此是 order[0] 表示 一个订单对象或者叫一张订单。
+productsInThisOrder 也就是 order[0].items //订单里面有哪些产品
+其下有：
+item 字段：对应一个 product 对象
+qty 字段
+price 字段
+
+order[0].items 的结构。是数组类型 [object Array]
+[ 
+    //每个元素表示一个与订单有关的产品信息
+    //其下有：
+    //item 字段：对应一个 product 对象
+    //qty 字段
+    //price 字段
+
+    //数组里面的第一个元素
+    { 
+        item:
+            { 
+                product_sku: '16700010201',
+                sizeName: 'xs',
+                _id: 2,
+                imagePath: 'http://localhost:3000/images/173000102view1-160x200.jpg',
+                imageUrl: 'http://localhost:3000/images',
+                title: 'Gothic Video Game',
+                description: 'Awesome Game!!!!',
+                price: 10,
+                product_sn: '173000102',
+                product_style: '1730001',
+                product_color: 'Umber brown',
+                view_number: 6,
+                product_category_0: 1,
+                product_category_1: 11,
+                product_category_2: 1101,
+                sizeAName: 'XS',
+                sizeBName: 'S',
+                sizeCName: 'M',
+                sizeDName: 'L',
+                sizeEName: 'XL',
+                sizeFName: 'XXL',
+                colorImage: '-40x30',
+                thumbnail: '-80x100',
+                extraSmall: '-160x200',
+                small: '-320x400',
+                smallRetina: '-640x800',
+                medium: '-480x600',
+                mediumRetina: '-960x1200',
+                large: '-800x1000',
+                largeRetina: '-960x1200',
+                standard: '-960x1200',
+                standardRetina: '-960x1200',
+                imageType: '.jpg',
+                __v: 0,
+                sizes: [Object] 
+            },
+        qty: 1,
+        price: 10 
+    },
+    //数组里面的第二个元素
+    { 
+        item:
+            { 
+                product_sku: '16700010202',
+                sizeName: 's',
+                _id: 2,
+                imagePath: 'http://localhost:3000/images/173000102view1-160x200.jpg',
+                imageUrl: 'http://localhost:3000/images',
+                title: 'Gothic Video Game',
+                description: 'Awesome Game!!!!',
+                price: 10,
+                product_sn: '173000102',
+                product_style: '1730001',
+                product_color: 'Umber brown',
+                view_number: 6,
+                product_category_0: 1,
+                product_category_1: 11,
+                product_category_2: 1101,
+                sizeAName: 'XS',
+                sizeBName: 'S',
+                sizeCName: 'M',
+                sizeDName: 'L',
+                sizeEName: 'XL',
+                sizeFName: 'XXL',
+                colorImage: '-40x30',
+                thumbnail: '-80x100',
+                extraSmall: '-160x200',
+                small: '-320x400',
+                smallRetina: '-640x800',
+                medium: '-480x600',
+                mediumRetina: '-960x1200',
+                large: '-800x1000',
+                largeRetina: '-960x1200',
+                standard: '-960x1200',
+                standardRetina: '-960x1200',
+                imageType: '.jpg',
+                __v: 0,
+                sizes: [Object] 
+            },
+        qty: 2,
+        price: 20 
+    } 
+]
+--}}

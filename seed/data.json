@@ -1,0 +1,134 @@
+{
+    "products": {
+        "_model": "Product",
+        "product_173000101": {
+            "imagePath": "",
+            "imageUrl": "http://localhost:3000/images",
+            "title": "Gothic Video Game",
+            "description": "Awesome Game!!!!",
+            "price": 10.00,
+            "_id": 1,
+            "sizes": [
+                {
+                    "size": "->sizes.size_16700010101._id"
+                },
+                {
+                    "size": "->sizes.size_16700010102._id"
+                },
+                {
+                    "size": "->sizes.size_16700010103._id"
+                }
+            ],
+            "product_sn": "173000101",
+            "product_style": "1730001",
+            "product_color": "Umber brown",            
+            "view_number": 6,  
+            "product_category_0": 1,
+            "product_category_1": 11,
+            "product_category_2": 1101,
+            "sizeName": "",
+            "sizeAName": "XS",
+            "sizeBName": "S",
+            "sizeCName": "M",
+            "sizeDName": "L",
+            "sizeEName": "XL",
+            "sizeFName": "XXL",
+            "colorImage": "-40x30",
+            "thumbnail": "-80x100",
+            "extraSmall": "-160x200",
+            "small": "-320x400",
+            "smallRetina": "-640x800",
+            "medium": "-480x600",
+            "mediumRetina": "-960x1200",
+            "large": "-800x1000",
+            "largeRetina": "-960x1200",
+            "standard": "-960x1200",
+            "standardRetina": "-960x1200",
+            "imageType": ".jpg"
+        },
+        "product_173000102": {
+            "imagePath": "",
+            "imageUrl": "http://localhost:3000/images",
+            "title": "Gothic Video Game",
+            "description": "Awesome Game!!!!",
+            "price": 10.00,
+            "_id": 2,
+            "sizes": [
+                {
+                    "size": "->sizes.size_16700010201._id"
+                },
+                {
+                    "size": "->sizes.size_16700010202._id"
+                },
+                {
+                    "size": "->sizes.size_16700010203._id"
+                }
+            ],
+            "product_sn": "173000102",
+            "product_style": "1730001",
+            "product_color": "Umber brown",            
+            "view_number": 6,  
+            "product_category_0": 1,
+            "product_category_1": 11,
+            "product_category_2": 1101,
+            "sizeName": "",
+            "sizeAName": "XS",
+            "sizeBName": "S",
+            "sizeCName": "M",
+            "sizeDName": "L",
+            "sizeEName": "XL",
+            "sizeFName": "XXL",
+            "colorImage": "-40x30",
+            "thumbnail": "-80x100",
+            "extraSmall": "-160x200",
+            "small": "-320x400",
+            "smallRetina": "-640x800",
+            "medium": "-480x600",
+            "mediumRetina": "-960x1200",
+            "large": "-800x1000",
+            "largeRetina": "-960x1200",
+            "standard": "-960x1200",
+            "standardRetina": "-960x1200",
+            "imageType": ".jpg"
+        }
+    },
+    "sizes": {
+        "_model": "Size",
+        "size_16700010101": {
+            "product_sn": "173000101",
+            "product_sku": "16700010101",             
+            "product_size": "xs",
+            "stock_quantity": "100"
+        },
+        "size_16700010102": {
+            "product_sn": "173000101",
+            "product_sku": "16700010102",             
+            "product_size": "s",
+            "stock_quantity": "100"
+        },
+        "size_16700010103": {
+            "product_sn": "173000101",
+            "product_sku": "16700010103",             
+            "product_size": "m",
+            "stock_quantity": "100"
+        },
+        "size_16700010201": {
+            "product_sn": "173000102",
+            "product_sku": "16700010201",             
+            "product_size": "xs",
+            "stock_quantity": "100"
+        },
+        "size_16700010202": {
+            "product_sn": "173000102",
+            "product_sku": "16700010202",             
+            "product_size": "s",
+            "stock_quantity": "100"
+        },
+        "size_16700010203": {
+            "product_sn": "173000102",
+            "product_sku": "16700010203",             
+            "product_size": "m",
+            "stock_quantity": "100"
+        }
+    }
+}

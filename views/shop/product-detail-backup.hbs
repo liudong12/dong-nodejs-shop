@@ -1,0 +1,259 @@
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href='/css/shop.product-detail.css'/>
+</head>
+
+<div>{{totalPrice}}</div> 
+<div>{{product}}</div>
+
+
+{{Session::has('editing-item') ? Session::forget('editing-item') : null}}
+<div id="categories">
+    <div class="content">
+        <div class="detail-top-wrap">
+            <div class="ctn">
+                <div class="imgbox">
+                    <!-- 商品大图 -->
+                    <a class="smallimg" href="#">
+                        <picture>     
+                            <source class="smallimg1" srcset="{{$product->largeImageUrl}}, {{$product->largeRetinaImageUrl}} 2x" media="(min-width: 768px)"> 
+                            <source class="smallimg2" srcset="{{$product->mediumImageUrl}}, {{$product->mediumRetinaImageUrl}} 2x" media="(min-width: 480px)">                   
+                            <source class="smallimg3" srcset="{{$product->smallImageUrl}}, {{$product->smallRetinaImageUrl}} 2x" media="(min-width: 320px)">
+                            <img id="smallimg" class="smallimg4" srcset="{{$product->standardImageUrl}}" alt="…" >
+                        </picture>                        
+                    </a>
+
+                    <!--商品细节大图-->
+                    <div class="bigbox">
+                        <picture> 
+                            <source class="smallimg1" srcset="{{$product->largeImageUrl}}, {{$product->largeRetinaImageUrl}} 2x" media="(min-width: 768px)"> 
+                            <source class="smallimg2" srcset="{{$product->mediumImageUrl}}, {{$product->mediumRetinaImageUrl}} 2x" media="(min-width: 480px)">                   
+                            <source class="smallimg3" srcset="{{$product->smallImageUrl}}, {{$product->smallRetinaImageUrl}} 2x" media="(min-width: 320px)">
+                            <img id="bigimg" class="smallimg4" srcset="{{$product->standardImageUrl}}" alt="…" >
+                        </picture>
+                    </div>
+
+                    <!-- 大图上的显示区域遮罩层 -->
+                    <div id="layer"></div>
+
+                </div> <!-- end imgbox -->
+            </div> <!-- end ctn -->
+
+            <!-- 缩略图 -->
+            <div class="imgsbox">
+                <ul id="imgslist">  <!-- <ul id="imgslist" class="clearfix"> -->
+                    <li class="imglist imglist1 selected" data-id="{{$product->viewImageId[1]}}">
+                        <!-- 商品小图 -->
+                        <img class="simg simg1" alt="加载中..." src="{{$product->viewImageUrl[1]}}" data-src="{{$product->viewImageId[1]}}" >
+                    </li>
+
+                    @for ($i = 2; $i < $product->view_number+1; $i++)
+
+                    <li class="imglist {{'imglist' . $i}}" data-id="{{$product->viewImageId[$i]}}">
+                        <!-- 商品小图 -->
+                        <img class="simg {{'simg' . $i}}" alt="加载中..." src="{{$product->viewImageUrl[$i]}}" data-src="{{$product->viewImageId[$i]}}" >
+                    </li>
+
+                    @endfor
+                        <!-- <li class="imglist">
+                        
+                            <img class="simg simg2" alt="加载中..." src="{{$product->viewBImageUrl}}" data-src="{{$product->viewBImageId}}">
+                        </li>
+                        <li class="imglist">
+                            
+                            <img class="simg simg3" alt="加载中..." src="{{$product->viewCImageUrl}}" data-src="{{$product->viewCImageId}}">
+                        </li>
+                        <li class="imglist">
+                            
+                            <img class="simg simg4" alt="加载中..." src="{{$product->viewDImageUrl}}" data-src="{{$product->viewDImageId}}">
+                        </li> -->
+                </ul>
+            </div> 
+
+            <div class="row details-right-wrap"> 
+
+                <div class="details-info">
+                    <p class="details-title">{{$product->title}}</p>
+                    <p class="details-price">$&nbsp{{$product->price}}</p>
+                </div>
+
+                @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                    <p>{{$error}}</p>
+                    @endforeach
+                </div>
+                @endif
+                <form action="{{route('product.addToCart')}}" method="post" id="add-to-cart" onsubmit="return false;"> 
+
+                    <!-- <label for="gender_male">
+                      <input  type="radio" id="gender_male" value="m" name="gender"/>
+                      Male
+                    </label>
+                    <label for="gender_female">
+                      <input  type="radio" id="gender_female" value="f" name="gender"/>
+                      Female
+                    </label> -->
+
+                    <p class="color-name"><span>Color:&nbsp</span><span class="color-name-span"></span></p>
+
+                    <div class="product-color-container">
+
+                        <ul id="" class="product-color-ul clearfix">
+                            @foreach ($brothers as $brother)
+
+                                @if ($product->product_sn == $brother->product_sn)
+                                    <li class="product-color-li selected">
+
+                                        <label for="{{'color-radio-' . $brother->product_sn . '-' . $brother->product_color}}" class="color" style="background-image:url('{{$brother->colorImageUrl}}')" data-color="{{$brother->product_color}}" 
+                                            data-id = "{{$brother->product_sn}}" data-view-number="{{$brother->view_number}}"
+                                            data-product-id = "{{$brother->id}}">
+                                            <input type="radio" value="{{$brother->product_color}}" name="color-radio" id="{{'color-radio-' . $brother->product_sn . '-' . $brother->product_color}}">
+                                        </label>
+
+                                    </li>
+
+                                @else
+                                    <li class="product-color-li">
+
+                                        <label for="{{'color-radio-' . $brother->product_sn . '-' . $brother->product_color}}" class="color" style="background-image:url('{{$brother->colorImageUrl}}')" data-color="{{$brother->product_color}}" 
+                                            data-id = "{{$brother->product_sn}}" data-view-number="{{$brother->view_number}}"
+                                            data-product-id = "{{$brother->id}}">
+                                            <input type="radio" value="{{$brother->product_color}}" name="color-radio" id="{{'color-radio-' . $brother->product_sn . '-' . $brother->product_color}}">
+                                        </label>
+
+                                    </li>
+                                @endif                                   
+                                <!-- <p>This is user {{ $brother->product_color }}</p> -->
+                            @endforeach
+                        </ul>
+                    </div>  <!-- end product-color-container -->
+
+                    <p class="size-name"><span>Size:&nbsp</span><span class="size-name-span"></span></p>
+                
+                    <div class="product-size-container" >
+                        <ul class="product-size-ul clearfix">
+                            @foreach ($sizes as $size)
+                                <li class="product-size-li ">
+
+                                    <label for="{{'size-radio-' . $product->product_sn . '-' . $size->product_size}}" class="size size01"  data-size="{{$size->product_size}}" >
+                                        <span class="size-span">{{$size->product_size}}</span>
+                                        <input type="radio" value="{{$size->product_size}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $size->product_size}}" class="size-radio">
+                                    </label>
+
+                                    {{-- <input type="text" value="{{$size->product_sku}}" name="product_sku"  class="hidden" id="product_sku"> --}}
+
+                                </li>
+
+                            @endforeach
+                                    <!-- <li class="product-size-li ">
+                                        <label for="{{'size-radio-' . $product->product_sn . '-' . $product->sizeAName}}" class="size size01"  data-size="{{$product->sizeAName}}" >
+                                            <span class="size-span">XS</span>
+                                            <input type="radio" value="{{$product->sizeAName}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $product->sizeAName}}" class="size-radio">
+                                        </label>
+                                    </li>
+                                    <li class="product-size-li">
+                                        <label for="{{'size-radio-' . $product->product_sn . '-' . $product->sizeBName}}" class="size size01"  data-size="{{$product->sizeBName}}" >
+                                            <span class="size-span">S</span>
+                                            <input type="radio" value="{{$product->sizeBName}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $product->sizeBName}}" class="size-radio">
+                                        </label>
+                                    </li>
+                                    <li class="product-size-li">
+                                        <label for="{{'size-radio-' . $product->product_sn . '-' . $product->sizeCName}}" class="size size01"  data-size="{{$product->sizeCName}}" >
+                                            <span class="size-span">M</span>
+                                            <input type="radio" value="{{$product->sizeCName}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $product->sizeCName}}" class="size-radio">
+                                        </label>
+                                    </li>
+                                    <li class="product-size-li">
+                                        <label for="{{'size-radio-' . $product->product_sn . '-' . $product->sizeDName}}" class="size size01"  data-size="{{$product->sizeDName}}" >
+                                            <span class="size-span">L</span>
+                                            <input type="radio" value="{{$product->sizeDName}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $product->sizeDName}}" class="size-radio">
+                                        </label>
+                                    </li>
+                                    <li class="product-size-li">                           
+                                        <label for="{{'size-radio-' . $product->product_sn . '-' . $product->sizeEName}}" class="size size01"  data-size="{{$product->sizeEName}}" >
+                                            <span class="size-span">XL</span>
+                                            <input type="radio" value="{{$product->sizeEName}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $product->sizeEName}}" class="size-radio">
+                                        </label>
+                                    </li>
+                                    <li class="product-size-li">
+                                        <label for="{{'size-radio-' . $product->product_sn . '-' . $product->sizeFName}}" class="size size01"  data-size="{{$product->sizeFName}}" >
+                                            <span class="size-span">XXL</span>
+                                            <input type="radio" value="{{$product->sizeFName}}" name="size-radio" id="{{'size-radio-' . $product->product_sn . '-' . $product->sizeFName}}" class="size-radio">
+                                        </label>
+                                    </li> -->
+                        </ul>                            
+                    </div> <!-- end product-size-container -->
+
+                    <!-- 前端和后端的验证错误信息都写在这里 -->
+                    <ol class="add_cart_errors"></ol>
+
+                    <div class="product-qty-container" >
+                        <label for="product-quality" class="product-quality-label">Quality:</label>                     
+                        <select id="product-quality" class="product-quality-select" name="product-qty" data-qty="1">  
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div> <!-- end product-qty-container -->
+
+                    <!-- 
+                    <div class="product-qty-container" >
+                    <label for="product-quality" class="product-quality-label">Quality:</label>      
+                    <select id="product-quality" class="product-quality-select" name="product-qty" data-qty="1">
+                    </select>
+                    </div> 
+                    -->
+
+                    <p class="size-chart"><a href="" class="size-chart-a">Size Chart</a></p>
+                    <p class="free-shipping-over">Free Shipping Over $80</p>
+                    <!-- <a href="{{route('product.addToCart',['id' => $product->id])}}" class="btn btn-success btn-add-to-cart" role="button">Add to Cart</a> -->
+                    <!-- <input type="text" value="{{$product->id}}" name="id"  class="hidden" id="id"> -->
+                    <input type="text" value="{{$product->product_sn}}" name="product_sn"  class="hidden" id="product_sn">
+                    <button type="submit" class="btn btn-success btn-add-to-cart">Add to Cart</button>
+                    {{csrf_field()}}
+                </form>
+            </div> <!-- end row details-right-wrap -->
+
+            <div class="clearfix"></div>
+        </div>  <!-- end detail-top-wrap -->
+
+        <div class="row">  <!-- detail-bottom-wrap -->
+            <div class="product-details-container">
+                <div class="product-details folding">DETAILS<span class="icon"></span></div>
+                <div class="product-details-section">             
+                    <h4 class="details-title">Product Details</h4> 
+                    <p class="details-description">
+                        A casual classic complete with a light and soft herringbone fabric with a subtle crinkle texture, Muscle Fit, Imported
+                    </p>     
+                    <div class="model-specs model-image-shown">
+                        <span class="model-specs-height">Model is 6'2"</span> 
+                        <span class="model-specs-size"> wearing Size M</span>
+                    </div> 
+                    <div class="fabric-care">
+                        <div class="fabric-care-container has-fabric-info has-care-info">
+                            <h4 class="fabric-care-title" data-property="GLB_MATERIALCARE">Material and Care</h4>
+                            <ul class="fabric-care-list"><li class="fabric">99% Cotton, 1% Elastane</li><li class="care">Do not dry clean</li><li class="care">Machine wash cold, with like colors</li></ul>
+                            <ul class="fabric-care-list-overflow"><li class="care">Only non-chlorine bleach</li><li class="care">Tumble dry low</li><li class="care">Warm iron if needed</li></ul>
+                        </div>
+                    </div>        
+                </div>
+            </div>                       
+        </div> <!-- end row end detail-bottom-wrap-->
+    </div> <!-- end content -->
+</div>  <!-- end #categories -->
+
+
+<script type="text/javascript" src="/js/shop.product-detail.js"></script>
+<script type="text/javascript" src="/js/folding.js"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+
+
+

@@ -1,0 +1,1 @@
+In this models folder, I will store all my mongoose models because I said mongoose uses schemas to define the data with which we work. And later on, I will use the defined models here to then interact with the data and easily work with it while having this validation in place since we defined how to data should look like.

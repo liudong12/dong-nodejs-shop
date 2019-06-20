@@ -1,0 +1,413 @@
+<div class="content">
+    <div class="row">
+        <h1 class="checkout-h1 checkout-title">SECURE CHECKOUT</h1>
+
+        <div class="promotions-container">
+            <div class="promotions folding">
+                PROMOTIONS <span class="icon"></span>
+            </div>
+            
+            <div class="promotions-section">
+                <input type="text" class="promotions-input" required placeholder="Promo Code">
+                <a href="" type="button" class="btn-success promotions-btn">Apply Code</a>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+
+        <div class="shipping-container">
+            <div class="shipping folding">
+                SHIPPING <span class="icon"></span>
+            </div>
+            
+            <div class="shipping-section">
+                <a href="/checkout-step-one" type="button" class="btn-success shipping-edit-btn">Edit</a>
+                <dl>
+                    <dt>SHIPPING TO</dt>
+                    <dd>{{#if session.order}}{{session.order.shipping_first_name}} {{session.order.shipping_last_name}}{{else}}  {{/if}}</dd>
+                    <dd>{{#if session.order}}{{session.order.shipping_address}}{{else}}  {{/if}}</dd>
+                    {{#ifCond session.order.shipping_address_line_two "!=" ''}}
+                        <dd>{{session.order.shipping_address_line_two}}</dd>
+                    {{/ifCond}}
+                    <dd>{{#if session.order}}{{session.order.shipping_city}}, {{session.order.shipping_state}} {{session.order.shipping_zip}}{{else}}  {{/if}}</dd>
+                    <dd>U.S.A</dd>
+                </dl>
+
+                <dl>
+                    <dt>SHIPPING TYPE</dt>
+                    <dd>standard</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="billing-info-wrap">
+            <h1 class="checkout-h1">PAYMENT</h1>
+
+            {{#if hasErrors}}
+                <div class="alert alert-danger">
+                    {{#each errorMessages}}
+                        <p>{{ this }}</p>
+                    {{/each}}
+                </div>
+            {{/if}}
+          
+            
+
+
+            <div class="errors_container">
+                <h4>Error Message:</h4>
+                <ol></ol>
+            </div>
+
+
+
+            <form action="/checkout" method="post" id="checkout-form">
+                {{!-- 
+                这个表单里面的标签都没有name属性，
+                那是因为我们将不提交这个表单，而是通过js收集里面的数据，然后交给第三方插件stripe去处理，然后会返回给我们一个token,然后我们将这个 token交给laravel来处理
+                --}}
+                {{!-- 
+                en:stripe:
+                Do not give names to the payment details form elements! This prevents that data from touching your server, which means you no longer need to worry about redacting logs, encrypting cardholder details, or other burdens of PCI compliance. 
+                --}}
+                
+                <div class="checkout-payment-group">
+                  <label for="payment-type" class="payment-type-label">Payment Type</label>                        
+                  <select class="payment-type"  id="payment-type" name="payment-type" placeholder="Payment Type">                 
+                        <option></option>
+                        <option value="01">Visa</option>
+                        <option value="02">MasterCard</option>
+                        <option value="03">American Express</option>
+                        <option value="04">Discover</option>    
+                        {{!-- <option value="" selected class="payment-type-hidden"></option> --}}               
+                  </select>                                                             
+                </div>
+                                
+                <div class="checkout-card-number-group">
+                    <label for="card-number" class="card-number-label">Credit Card Number</label>
+                    <input type="text" id="card-number"  name="card-number" class="card-number" required placeholder="Credit Card Number">
+                </div>
+                           
+                <div class="checkout-exp-group">
+                    <div class="col-xs-6 ">
+                        {{!-- 
+                        <div class="form-group">
+                        <label for="card-expiry-month">Expiration Month</label>
+                        <input type="text" id="card-expiry-month"  class="form-control" required>
+                        </div> 
+                        --}}
+                        <div class="checkout-exp-mon-group">
+                            <label for="card-expiry-month" class="card-expiry-month-label">Exp Month</label>                               
+                            <select   id="card-expiry-month" name="card-expiry-month" class="card-expiry-month">
+                                <option>{{!-- Exp Month --}}</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                                                            
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6">
+                            <div class="checkout-exp-year-group">
+                        {{!-- <label for="card-expiry-year">Expiration Year</label>
+                        <input type="text" id="card-expiry-year"  class="form-control" required> --}}
+                                <label for="card-expiry-year" class="card-expiry-year-label">Exp Year</label>
+                                <select  id="card-expiry-year" name="card-expiry-year" class="card-expiry-year">
+                                    <option>{{!-- Year --}}</option>
+                                    {{!-- <option value="16">2016</option>
+                                    <option value="17">2017</option>
+                                    <option value="18">2018</option>
+                                    <option value="19">2019</option>
+                                    <option value="20">2020</option>
+                                    <option value="21">2021</option>
+                                    <option value="22">2022</option>
+                                    <option value="23">2023</option>
+                                    <option value="24">2024</option>
+                                    <option value="25">2025</option>
+                                    <option value="26">2026</option>
+                                    <option value="27">2027</option>
+                                    <option value="28">2028</option> --}}
+                                    <option value="{{getYear 0}}">{{getYear 0}}</option>
+                                    <option value="{{getYear 1}}">{{getYear 1}}</option>
+                                    <option value="{{getYear 2}}">{{getYear 2}}</option>
+                                    <option value="{{getYear 3}}">{{getYear 3}}</option>
+                                    <option value="{{getYear 4}}">{{getYear 4}}</option>
+                                    <option value="{{getYear 5}}">{{getYear 5}}</option>
+                                    <option value="{{getYear 6}}">{{getYear 6}}</option>
+                                    <option value="{{getYear 7}}">{{getYear 7}}</option>
+                                    <option value="{{getYear 8}}">{{getYear 8}}</option>
+                                    <option value="{{getYear 9}}">{{getYear 9}}</option>
+                                    <option value="{{getYear 10}}">{{getYear 10}}</option>
+                                    <option value="{{getYear 11}}">{{getYear 11}}</option>
+                                    <option value="{{getYear 12}}">{{getYear 12}}</option>
+                                 </select>
+                            </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+
+
+                <div class="checkout-cvc-group">
+                    <label for="card-cvc" class="card-cvc-label">CVC</label>
+                    <input type="text" id="card-cvc"  name="card-cvc" class="card-cvc" required placeholder="CVC">
+                </div>
+                <div class="is-shipping-group">
+                    <input type="checkbox" name="is-shipping" class="is-shipping" value="true">
+                    <label class="is-shipping-label">Use My Shipping Address As Billing Address</label>
+                </div>
+
+                <div class="shipping-info-summary">
+                    
+                    <dl>
+                        <dt>YOUR ORDER WILL BE BILLED TO</dt>
+                        <dd>{{#if session.order}} {{session.order.shipping_first_name}} {{session.order.shipping_last_name}} {{else}}  {{/if}}</dd>
+                        <dd>{{#if session.order}} {{session.order.shipping_address}} {{else}}  {{/if}}</dd>
+                        {{#ifCond session.order.shipping_address_line_two "!=" ''}}
+                        <dd>{{session.order.shipping_address_line_two}}</dd>
+                        {{/ifCond}}
+                        <dd>{{#if session.order}} {{session.order.shipping_city}}, {{session.order.shipping_state}} {{session.order.shipping_zip}} {{else}}  {{/if}}</dd>
+                        <dd>U.S.A</dd>
+                    </dl>
+
+                </div>
+
+                <div class="shipping-info">
+
+                    <div class="checkout-first-name-group">
+                        <label for="first-name" class="first-name-label">First Name</label>
+                        <input type="text" id="first-name"  name="billing-first-name" value="{{#if session.order}}{{session.order.shipping_first_name}}{{else}}  {{/if}}" class="first-name" required placeholder="First Name">
+                    </div>
+
+                    <div class="checkout-last-name-group">
+                        <label for="last-name" class="last-name-label">Last Name</label>
+                        <input type="text" id="last-name"  name="billing-last-name" value="{{#if session.order}}{{session.order.shipping_last_name}}{{else}}  {{/if}}" class="last-name" required placeholder="Last Name">
+                    </div>
+                                                
+                    <div class="checkout-address-group">
+                        <label for="address" class="address-label">Address</label>
+                        <input type="text" id="address"  name="billing-address" value="{{#if session.order}}{{session.order.shipping_address}}{{else}}  {{/if}}" class="address" required placeholder="Address">
+                    </div>
+
+                    <div class="checkout-address-line-two-group">
+                        <label for="address-line-two" class="address-line-two-label">Address Line Two</label>
+                        <input type="text" id="address-line-two"  name="billing-address-line-two" value="{{#if session.order}}{{session.order.shipping_address_line_two}}{{else}}  {{/if}}" class="address-line-two" placeholder="Address Line Two">
+                    </div>
+
+                    <div class="checkout-city-group">
+                        <label for="city" class="city-label">City</label>
+                        <input type="text" id="city"  name="billing-city" value="{{#if session.order}}{{session.order.shipping_city}}{{else}}  {{/if}}" class="city" required placeholder="City">
+                    </div>
+
+                    <div class="checkout-state-zip-group">
+                        <div class="col-xs-4">
+                            <div class="checkout-state-group">
+                                <label for="state" class="state-label">State</label>                               
+                                {{!-- <select   id="state" name="state"  class="state">
+                                    <option></option>
+                                    <option value="01" {{Session::has('order') ? Session::get('order')->shippingState == "01" ? "selected" : '' : ''}}>01</option>
+                                    <option value="02" {{Session::has('order') ? Session::get('order')->shippingState == "02" ? "selected" : '' : ''}}>02</option>
+                                    <option value="03" {{Session::has('order') ? Session::get('order')->shippingState == "03" ? "selected" : '' : ''}}>03</option>
+                                    <option value="04" {{Session::has('order') ? Session::get('order')->shippingState == "04" ? "selected" : '' : ''}}>04</option>
+                                    <option value="05" {{Session::has('order') ? Session::get('order')->shippingState == "05" ? "selected" : '' : ''}}>05</option>
+                                    <option value="06" {{Session::has('order') ? Session::get('order')->shippingState == "06" ? "selected" : '' : ''}}>06</option>
+                                    <option value="07" {{Session::has('order') ? Session::get('order')->shippingState == "07" ? "selected" : '' : ''}}>07</option>
+                                    <option value="08" {{Session::has('order') ? Session::get('order')->shippingState == "08" ? "selected" : '' : ''}}>08</option>
+                                    <option value="09" {{Session::has('order') ? Session::get('order')->shippingState == "09" ? "selected" : '' : ''}}>09</option>
+                                    <option value="10" {{Session::has('order') ? Session::get('order')->shippingState == "10" ? "selected" : '' : ''}}>10</option>
+                                    <option value="11" {{Session::has('order') ? Session::get('order')->shippingState == "11" ? "selected" : '' : ''}}>11</option>
+                                    <option value="12" {{Session::has('order') ? Session::get('order')->shippingState == "12" ? "selected" : '' : ''}}>12</option>
+                                </select> --}}
+
+                                <select id="state" name="billing-state"  class="state">
+                                    <option>{{!-- Exp Month --}}</option>
+                                    <option value="AL" {{#ifCond session.order.shipping_state "==" "AL"}} selected {{else}}  {{/ifCond}}>Alabama</option>
+                                    <option value="AK" {{#ifCond session.order.shipping_state "==" "AK"}} selected {{else}}  {{/ifCond}}>Alaska</option>
+                                    <option value="AZ" {{#ifCond session.order.shipping_state "==" "AZ"}} selected {{else}}  {{/ifCond}}>Arizona</option>
+                                    <option value="AR" {{#ifCond session.order.shipping_state "==" "AR"}} selected {{else}}  {{/ifCond}}>Arkansas</option>
+                                    <option value="CA" {{#ifCond session.order.shipping_state "==" "CA"}} selected {{else}}  {{/ifCond}}>California</option>
+                                    <option value="CO" {{#ifCond session.order.shipping_state "==" "CO"}} selected {{else}}  {{/ifCond}}>Colorado</option>
+                                    <option value="CT" {{#ifCond session.order.shipping_state "==" "CT"}} selected {{else}}  {{/ifCond}}>Connecticut</option>
+                                    <option value="DE" {{#ifCond session.order.shipping_state "==" "DE"}} selected {{else}}  {{/ifCond}}>Delaware</option>
+                                    <option value="DC" {{#ifCond session.order.shipping_state "==" "DC"}} selected {{else}}  {{/ifCond}}>District Of Columbia</option>
+                                    <option value="FL" {{#ifCond session.order.shipping_state "==" "FL"}} selected {{else}}  {{/ifCond}}>Florida</option>
+                                    <option value="GA" {{#ifCond session.order.shipping_state "==" "GA"}} selected {{else}}  {{/ifCond}}>Georgia</option>
+                                    <option value="HI" {{#ifCond session.order.shipping_state "==" "HI"}} selected {{else}}  {{/ifCond}}>Hawaii</option>
+                                    <option value="ID" {{#ifCond session.order.shipping_state "==" "ID"}} selected {{else}}  {{/ifCond}}>Idaho</option>
+                                    <option value="IL" {{#ifCond session.order.shipping_state "==" "IL"}} selected {{else}}  {{/ifCond}}>Illinois</option>
+                                    <option value="IN" {{#ifCond session.order.shipping_state "==" "IN"}} selected {{else}}  {{/ifCond}}>Indiana</option>
+                                    <option value="IA" {{#ifCond session.order.shipping_state "==" "IA"}} selected {{else}}  {{/ifCond}}>Iowa</option>
+                                    <option value="KS" {{#ifCond session.order.shipping_state "==" "KS"}} selected {{else}}  {{/ifCond}}>Kansas</option>
+                                    <option value="KY" {{#ifCond session.order.shipping_state "==" "KY"}} selected {{else}}  {{/ifCond}}>Kentucky</option>
+                                    <option value="LA" {{#ifCond session.order.shipping_state "==" "LA"}} selected {{else}}  {{/ifCond}}>Louisiana</option>
+                                    <option value="ME" {{#ifCond session.order.shipping_state "==" "ME"}} selected {{else}}  {{/ifCond}}>Maine</option>
+                                    <option value="MD" {{#ifCond session.order.shipping_state "==" "MD"}} selected {{else}}  {{/ifCond}}>Maryland</option>
+                                    <option value="MA" {{#ifCond session.order.shipping_state "==" "01"}} selected {{else}}  {{/ifCond}}>Massachusetts</option>
+                                    <option value="MI" {{#ifCond session.order.shipping_state "==" "MA"}} selected {{else}}  {{/ifCond}}>Michigan</option>
+                                    <option value="MN" {{#ifCond session.order.shipping_state "==" "MN"}} selected {{else}}  {{/ifCond}}>Minnesota</option>
+                                    <option value="MS" {{#ifCond session.order.shipping_state "==" "MS"}} selected {{else}}  {{/ifCond}}>Mississippi</option>
+                                    <option value="MO" {{#ifCond session.order.shipping_state "==" "MO"}} selected {{else}}  {{/ifCond}}>Missouri</option>
+                                    <option value="MT" {{#ifCond session.order.shipping_state "==" "MT"}} selected {{else}}  {{/ifCond}}>Montana</option>
+                                    <option value="NE" {{#ifCond session.order.shipping_state "==" "NE"}} selected {{else}}  {{/ifCond}}>Nebraska</option>
+                                    <option value="NV" {{#ifCond session.order.shipping_state "==" "NV"}} selected {{else}}  {{/ifCond}}>Nevada</option>
+                                    <option value="NH" {{#ifCond session.order.shipping_state "==" "NH"}} selected {{else}}  {{/ifCond}}>New Hampshire</option>
+                                    <option value="NJ" {{#ifCond session.order.shipping_state "==" "NJ"}} selected {{else}}  {{/ifCond}}>New Jersey</option>
+                                    <option value="NM" {{#ifCond session.order.shipping_state "==" "NM"}} selected {{else}}  {{/ifCond}}>New Mexico</option>
+                                    <option value="NY" {{#ifCond session.order.shipping_state "==" "NY"}} selected {{else}}  {{/ifCond}}>New York</option>
+                                    <option value="NC" {{#ifCond session.order.shipping_state "==" "NC"}} selected {{else}}  {{/ifCond}}>North Carolina</option>
+                                    <option value="ND" {{#ifCond session.order.shipping_state "==" "ND"}} selected {{else}}  {{/ifCond}}>North Dakota</option>
+                                    <option value="OH" {{#ifCond session.order.shipping_state "==" "OH"}} selected {{else}}  {{/ifCond}}>Ohio</option>
+                                    <option value="OK" {{#ifCond session.order.shipping_state "==" "OK"}} selected {{else}}  {{/ifCond}}>Oklahoma</option>
+                                    <option value="OR" {{#ifCond session.order.shipping_state "==" "OR"}} selected {{else}}  {{/ifCond}}>Oregon</option>
+                                    <option value="PA" {{#ifCond session.order.shipping_state "==" "PA"}} selected {{else}}  {{/ifCond}}>Pennsylvania</option>
+                                    <option value="RI" {{#ifCond session.order.shipping_state "==" "RI"}} selected {{else}}  {{/ifCond}}>Rhode Island</option>
+                                    <option value="SC" {{#ifCond session.order.shipping_state "==" "SC"}} selected {{else}}  {{/ifCond}}>South Carolina</option>
+                                    <option value="SD" {{#ifCond session.order.shipping_state "==" "SD"}} selected {{else}}  {{/ifCond}}>South Dakota</option>
+                                    <option value="TN" {{#ifCond session.order.shipping_state "==" "TN"}} selected {{else}}  {{/ifCond}}>Tennessee</option>
+                                    <option value="TX" {{#ifCond session.order.shipping_state "==" "TX"}} selected {{else}}  {{/ifCond}}>Texas</option>
+                                    <option value="UT" {{#ifCond session.order.shipping_state "==" "UT"}} selected {{else}}  {{/ifCond}}>Utah</option>
+                                    <option value="VT" {{#ifCond session.order.shipping_state "==" "VT"}} selected {{else}}  {{/ifCond}}>Vermont</option>
+                                    <option value="VA" {{#ifCond session.order.shipping_state "==" "VA"}} selected {{else}}  {{/ifCond}}>Virginia</option>
+                                    <option value="WA" {{#ifCond session.order.shipping_state "==" "WA"}} selected {{else}}  {{/ifCond}}>Washington</option>
+                                    <option value="WV" {{#ifCond session.order.shipping_state "==" "WV"}} selected {{else}}  {{/ifCond}}>West Virginia</option>
+                                    <option value="WI" {{#ifCond session.order.shipping_state "==" "WI"}} selected {{else}}  {{/ifCond}}>Wisconsin</option>
+                                    <option value="WY" {{#ifCond session.order.shipping_state "==" "WY"}} selected {{else}}  {{/ifCond}}>Wyoming</option>
+                                </select>               
+                
+                                                                
+                            </div>
+                        </div>
+
+                        <div class="col-xs-8">
+                            <div class="checkout-zip-group">
+                                <label for="zip" class="zip-label">Zip</label>
+                                <input type="text" id="zip"  name="billing-zip" value="{{#if session.order}}{{session.order.shipping_zip}}{{else}}  {{/if}}" class="zip" required placeholder="Zip">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>  {{!-- end checkout-state-zip-group --}}
+                </div>  {{!-- end shipping-info --}}
+
+                <div class="contact-info-wrap">
+                    <h1 class="checkout-h1">CONTACT INFO</h1>
+                    <div class="billing-tel-group">
+                        <label for="billing-tel" class="billing-tel-label">Phone: (999-999-9999)</label>
+                        <input type="text" id="billing-tel"  name="billing-tel" value="" class="billing-tel" required placeholder="Phone: (999-999-9999)">
+                    </div>
+
+                    <div class="email-group">
+                        <label for="email" class="email-label">Email</label>
+                        <input type="text" id="email"  name="email" value="" class="email" required placeholder="Email:">
+                    </div>
+                </div>
+                            
+                
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                
+                <button type="submit" class="btn btn-success btn-place-order">PLACE ORDER</button>
+            </form>
+        </div>  {{!-- end billing-info-wrap --}}
+
+            <div class="order-summary-container">
+                <div class="order-summary folding">ORDER SUMMARY<span class="icon"></span></div>
+                <div class="order-summary-section">             
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Merchandise Total</th>
+                                <td>$&nbsp{{formatCurrency total}}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping & Handling<br>Standard</th>
+                                <td>$&nbsp5.00</td>
+                            </tr>
+                            <tr>
+                                
+                            </tr>
+                            <tr>
+                                <th class="bold">ORDER TOTAL</th>
+                                <td class="bold">$&nbsp{{formatCurrency total}}</td>
+                            </tr>
+                            <tr>
+                                <th ><a href="">Shipping & Handling</a></th>
+                                <td ></td>
+                            </tr>
+                        </tbody>
+                    </table>                  
+                </div>
+            </div>
+
+            <div class="order-details-container">
+                <div class="order-details folding">ORDER DETAILS <span class="icon"></span></div>
+                
+                <div class="order-details-section">
+                    <ul>                            
+                        {{#if session.cart}}
+
+                            <div class="dropdown-inner">
+
+                                {{#each productsInCart}}
+                                    <li>
+                                        {{!-- <dl>
+                                            <dt>
+                                                <img src="{{$product['item']['imagePath']}}" alt="..." class="img-responsive">
+                                            </dt>
+                                            <dd class="header-cart-item-title">
+                                                {{$product['item']['title']}}
+                                            </dd>
+                                            <dd class="header-cart-item-qty">
+                                                Quality:&nbsp{{$product['qty']}}
+                                            </dd>
+                                            <dd class="header-cart-item-price">
+                                                Price:&nbsp${{$product['price']}}
+                                            </dd>
+                                        </dl> --}}
+                                        <a href="" class="header-cart-item">
+                                            <img src="{{this.item.imagePath}}" alt="..." class="img-responsive">
+                                            <div class="header-cart-item-info">
+                                                <ul class="header-cart-item-details">
+                                                    <li class="header-cart-item-title">
+                                                        {{this.item.title}}
+                                                    </li>
+                                                    <li class="header-cart-item-qty">
+                                                        Quality:&nbsp{{this.qty}}
+                                                    </li>
+                                                    <li class="header-cart-item-price">
+                                                        Price:&nbsp${{formatCurrency this.price}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    {{!-- 最后一个不加线 --}}
+                                    {{#if @last}}
+                                                                                            
+                                    {{else}}
+                                        <li class="divider"></li>
+                                    {{/if}}
+
+                                {{/each}}
+
+                            </div>
+                            
+                        {{else}}
+                            <li class="header-bag-empty">Currently empty</li>
+                        {{/if}}         
+                     </ul>
+                    
+                </div>
+            </div>                  
+    </div>  {{!-- end .row --}}
+    <div class="clearfix"></div>
+</div> {{!-- end .content --}}

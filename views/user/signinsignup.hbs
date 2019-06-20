@@ -1,0 +1,195 @@
+ 	<div class="content">
+ 		<div class="room-under-header"></div>
+		<div class="row">
+			<div class="main-title">
+		        <ul class="tab-nav">
+			        {{#ifCond isSigninSignup "==" 'signin'}}
+			        	<li class="current" name="basic">
+			        		<a href="#" class="tab-a current-a">SIGN IN</a>
+			        	</li>  {{!--route('user.signin')--}}
+			            <li name="content">
+			            	<a href="#" class="tab-a">CREATE ACCOUNT</a>
+			            </li>  {{!--route('user.signup')--}}
+			        {{/ifCond}}		
+			        {{#ifCond isSigninSignup "==" 'signup'}}
+			        	<li  name="basic">
+			        		<a href="#" class="tab-a current-a">SIGN IN</a>
+			        	</li>  {{!--route('user.signin')--}}
+			            <li class="current" name="content">
+			            	<a href="#" class="tab-a">CREATE ACCOUNT</a>
+			            </li>  {{!--route('user.signup')--}}
+			        {{/ifCond}}            		           
+		        </ul>
+		        {{#ifCond isSigninSignup "==" 'signin'}}
+			        <div class="tab-content">
+			        	
+			        	
+			            {{!-- 前端验证错误提示区 --}}
+			        	<div class="errors_container">
+			        		{{!-- <h4>Error Message:</h4> --}}
+			        		<ol></ol>
+			        	</div>
+
+			        	{{!-- 后端验证错误提示区 --}}
+			        	{{!-- 如果有错误的话，这个页面就会被传入$errors 数组类型 --}}
+			        	{{#if hasErrors}}
+			        	    <div class="alert alert-danger">
+	        	                {{# each messages }}
+	        	                    <p>{{this}}</p>
+	        	                {{/each}}
+			        	    </div>
+			        	{{/if}}
+						<form action="/user/signin" method="post" id="signin">
+							<div class="signin-email-group">
+								<label for="email" class="email-label">E-Mail</label>
+								<input type="text" id="signin-email" name="signin_email" class="email" placeholder="E-Mail">
+							</div>
+							<div class="signin-password-group">
+								<label for="password" class="password-label">Password</label>
+								<input type="password" id="signin-password" name="signin_password" class="password" placeholder="Password">
+							</div>
+							<div>
+								<p class="forget-password">
+									<a href="" >Forgot Password?</a>
+								</p>
+							</div>
+							<div>
+								<p class="shop-terms">
+									I agree to the <a href="" >DongDongTrading Shop Terms</a>, the <a href="" >website terms of use</a>, and the <a href="" >Privacy Policy</a>.
+								</p>
+							</div>
+							<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+							<button type="submit" class="btn btn-success btn-signin">Sign In</button>
+							<div class="divider">
+								
+							</div>
+							<p class="divider-or">
+								<span>or</span>
+							</p>
+							<button type="submit" class="btn btn-facebook">Sign In with Face Book</button>
+						</form>
+				    </div>
+			        <div class="tab-content" style="display:none">
+			        	{{!-- 前端验证错误提示区 --}}
+			        	<div class="errors_container">
+			        		{{!-- <h4>Error Message:</h4> --}}
+			        		<ol></ol>
+			        	</div>
+
+			        	{{!-- 后端验证错误提示区 --}}
+			        	{{!-- 如果有错误的话，这个页面就会被传入$errors 数组类型 --}}
+			        	{{#if hasErrors}}
+			        	    <div class="alert alert-danger">
+	        	                {{# each messages }}
+	        	                    <p>{{this}}</p>
+	        	                {{/each}}
+			        	    </div>
+			        	{{/if}}
+			        	<form action="/user/signup" method="post" id="signup">
+			        		<div class="signup-email-group">
+			        			<label for="email" class="email-label">E-Mail</label>
+			        			<input type="text" id="signup-email" name="email" class="email" placeholder="E-Mail">
+			        		</div>
+			        		<div class="signup-password-group">
+			        			<label for="password" class="password-label">Password</label>
+			        			<input type="password" id="signup-password" name="password" class="password" placeholder="Password">
+			        		</div>
+			        		<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+			        		<button type="submit" class="btn btn-success btn-signin">Sign Up</button>
+							<div class="divider">
+								
+							</div>
+							<p class="divider-or">
+								<span>or</span>
+							</p>
+							<button type="submit" class="btn btn-facebook">Sign Up with Face Book</button>
+			        	</form>
+			        </div> 
+			    {{/ifCond}}
+		        {{#ifCond isSigninSignup "==" 'signup'}} 
+			        <div class="tab-content" style="display:none">
+			            {{!-- 前端验证错误提示区 --}}
+			        	<div class="errors_container">
+			        		{{!-- <h4>Error Message:</h4> --}}
+			        		<ol></ol>
+			        	</div>
+
+			        	{{!-- 后端验证错误提示区 --}}
+			        	{{!-- 如果有错误的话，这个页面就会被传入$errors 数组类型 --}}
+			        	{{#if hasErrors}}
+			        	    <div class="alert alert-danger">
+	        	                {{# each messages }}
+	        	                    <p>{{this}}</p>
+	        	                {{/each}}
+			        	    </div>
+			        	{{/if}}
+						<form action="/user/signin" method="post" id="signin">
+							<div class="signin-email-group">
+								<label for="email" class="email-label">E-Mail</label>
+								<input type="text" id="signin-email" name="signin_email" class="email" placeholder="E-Mail">
+							</div>
+							<div class="signin-password-group">
+								<label for="password" class="password-label">Password</label>
+								<input type="password" id="signin-password" name="signin_password" class="password" placeholder="Password">
+							</div>
+							<div>
+								<p class="forget-password">
+									<a href="" >Forgot Password?</a>
+								</p>
+							</div>
+							<div>
+								<p class="shop-terms">
+									I agree to the <a href="" >DongDongTrading Shop Terms</a>, the <a href="" >website terms of use</a>, and the <a href="" >Privacy Policy</a>.
+								</p>
+							</div>
+							<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+							<button type="submit" class="btn btn-success btn-signin">Sign In</button>
+							<div class="divider">
+								
+							</div>
+							<p class="divider-or">
+								<span>or</span>
+							</p>
+							<button type="submit" class="btn btn-facebook">Sign In with Face Book</button>
+						</form>
+				    </div>
+			        <div class="tab-content" >
+			        	{{!-- 前端验证错误提示区 --}}
+			        	<div class="errors_container">
+			        		{{!-- <h4>Error Message:</h4> --}}
+			        		<ol></ol>
+			        	</div>
+
+			        	{{!-- 后端验证错误提示区 --}}
+			        	{{!-- 如果有错误的话，这个页面就会被传入$errors 数组类型 --}}
+			        	{{#if hasErrors}}
+			        	    <div class="alert alert-danger">
+	        	                {{# each messages }}
+	        	                    <p>{{this}}</p>
+	        	                {{/each}}
+			        	    </div>
+			        	{{/if}}
+			        	<form action="/user/signup" method="post" id="signup">
+			        		<div class="signup-email-group">
+			        			<label for="email" class="email-label">E-Mail</label>
+			        			<input type="text" id="signup-email" name="email" class="email" placeholder="E-Mail">
+			        		</div>
+			        		<div class="signup-password-group">
+			        			<label for="password" class="password-label">Password</label>
+			        			<input type="password" id="signup-password" name="password" class="password" placeholder="Password">
+			        		</div>
+			        		<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+			        		<button type="submit" class="btn btn-success btn-signin">Sign Up</button>
+							<div class="divider">
+								
+							</div>
+							<p class="divider-or">
+								<span>or</span>
+							</p>
+							<button type="submit" class="btn btn-facebook">Sign Up with Face Book</button>
+			        	</form>
+			        </div> 
+		        {{/ifCond}}  
+    		</div>  {{!-- end main-title --}}
+		</div>  {{!-- end row --}}
+	</div>  {{!-- end content --}}

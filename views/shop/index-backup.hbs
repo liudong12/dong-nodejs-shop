@@ -1,0 +1,56 @@
+<div class="content">
+    <div class="row">
+
+        {{#if session.success}}  {{!-- show the div only if the session has success object inside it --}}
+            <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+                <div id="charge-message" class="alert alert-success">
+                    {{session.success}}
+                </div>
+            </div>
+        {{/if}}
+
+
+        {{!-- 没用：$products as $productsChunk  :  循环出每一个产品，这样写不行 --}}
+        {{!-- 没用：加->chunk(3)   : 分组，每一组有3个产品 --}}
+        {{!-- 每个$productsChunk里面有3个产品 --}}
+        {{!-- {{#each }} 。。。 {{/each}} 这是 block statement. this will loop through all the products --}}
+        {{#each products}}  {{!-- outer each loop--}} {{!-- 循环出每一个组， 下面 {{#each this}} 的 this 表示每一个组--}}
+
+            {{!-- http://getbootstrap.com/components/#thumbnails 这里是从bootstrap上拉来的thumbnails--}}
+
+                                         {{!-- 再次循环，得到每个产品 --}}  {{!-- inner each loop--}}
+            {{#each this}} {{!--this表示the current element of the loop(外层的#each products).here "this" is array too--}}
+                <div class="col-sm-6 col-md-4 col-lg-3"> {{!-- 这个 div 表示每个单个的产品--}}
+                    {{!-- col-lg-3 表示，当大屏是每个图片占3列。以此类推。中屏占4列--}}
+                    <div class="thumbnail">
+                        <a href="/product-detail/{{this._id}}">  {{!-- 这个 this 表示从每一组里面循环出来的单个产品--}}
+                            <img src="{{this.smallRetinaImageUrl}}" alt="..." class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <a href="">
+                                <h4 class="caption-title">
+                                    {{this.title}}
+                                </h4>
+                            </a>
+                            <div class="caption-price">
+                                ${{this.price}}
+                            </div>
+                            {{!-- <div class="clearfix">
+                                <a href="{{route('product.addToCart',['id' => $product->id])}}" class="btn btn-success pull-right" role="button">Add to Cart</a>
+                            </div>  --}}      
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{/each}}
+
+        <div class="clearfix">
+
+        {{!-- 有关清理浮动的知识点：
+        正在浮动的元素的外层元素就算没有高度或高度不够时(高度比正在浮动的元素小)，如果我们对外层的那个元素设置margin或padding的话，对内层（正在浮动）的元素依然有影响。但是，因为高度不够（其实是因为浮动元素浮起来了），不能被高于本身的那个浮动元素所撑起，所以，正在浮动的那个元素的下面的那个元素（本来应该在浮动元素的下面的）会跑到正在浮动的元素的底下去（被浮动的那个元素覆盖），为了改变这种效果，我们要在底部的那个元素上加，clearfix. --}}
+
+        
+
+        </div>
+     </div>
+</div>

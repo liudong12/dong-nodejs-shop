@@ -1,0 +1,1250 @@
+{{!-- <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/shopping-cart/">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        <span class="badge">{{session.cart.totalQty}}</span> 
+                        <!--access my overall session, then access cart, in the cart i have totalQty-->
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {{# if login }} <!--login is golbal varible-->
+                            <li><a href="/user/profile">User Account</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/user/logout">Logout</a></li>
+                        {{ else }}
+                            <li><a href="/user/signup">Sign up</a></li>
+                            <li><a href="/user/signin">Sign in</a></li>
+                        {{/if}}
+
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+ --}}
+
+
+
+
+
+
+
+{{!-- <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>      
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/shopping-cart/">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        <span class="badge">{{session.cart.totalQty}}</span> 
+                        <!--access my overall session, then access cart, in the cart i have totalQty-->
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {{# if login }} <!--login is golbal varible-->
+                            <li><a href="/user/profile">User Account</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/user/logout">Logout</a></li>
+                        {{ else }}
+                            <li><a href="/user/signup">Sign up</a></li>
+                            <li><a href="/user/signin">Sign in</a></li>
+                        {{/if}}
+
+                    </ul>
+                </li>
+            </ul>      
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+ --}}
+
+
+
+
+
+
+<header>
+    <div class="header-wrap">
+        <!-- 移动端的那个符号 -->
+        <div class="cd-dropdown-wrapper"><!-- cd-dropdown === mobile-nav -->
+            <a class="cd-dropdown-trigger" href="#0">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                <!-- <i class="menu-icon" aria-hidden="true"></i> -->
+            </a>
+            <!-- 备注： class="cd-dropdown" 的<nav class="cd-dropdown">...</nav>也可以放在这里 -->
+        </div> <!-- 结束 cd-dropdown-wrapper -->
+
+        <div  class="mobile-search-wrapper">
+            <a id="showTop" class="mobile-search-trigger"> 
+                <i class="fa fa-search" aria-hidden="true"></i><span>Search<span>
+                <!-- <i class="search-icon" aria-hidden="true"></i><span>Search<span> -->
+            </a>
+        </div><!-- 结束 mobile-search-wrapper -->
+
+        <div class="mobile-cart-wrapper">
+            <a class="mobile-cart-trigger" data-isOpen="false" href="/shopping-cart/"> 
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i> <!-- <span>Bag<span> -->
+                <!-- <i class="bag-icon" aria-hidden="true"></i> -->
+                <span class="badge">{{session.cart.totalQty}}
+                <!-- Session::has('cart') ? '('. Session::get('cart')->totalQty .')' : '' -->
+
+                    {{!-- {{Session::has('cart') ? Session::get('cart')->totalQty: ''}}  --}}
+                </span>
+            </a>               
+        </div><!-- 结束 mobile-cart-wrapper -->
+
+
+
+        <div class="desktop-search-wrapper">
+            <form class="desktop-search" role="search">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+                <button type="submit" > 
+                    <i class="fa fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div><!-- 结束 desktop-search-wrapper -->
+
+        <div  class="desktop-user-wrapper dropdown">
+            <div class="desktop-user-trigger">
+                
+                    <a class="sign-in"> 
+                        <!-- <i class="fa fa-user user-icon" aria-hidden="true"></i><span>Welcome</span> -->
+                        <i class="user-icon" aria-hidden="true"></i><span>Welcome</span>
+                    </a>
+                
+
+                <ul class="dropdown-menu user">                        
+                    {{!-- {{#if session.logInStatus}} 已经废弃，不好用--}}
+                    {{#if user}}
+                        <li class="dropdown-arrow-user arrow-user">
+                            <a href="/user/profile">USER PROFILE</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="/user/logout">LOGOUT</a>
+                        </li>
+                    {{else}}
+                        <li class="dropdown-arrow-user arrow-user">
+                            <a href="/user/signin">SIGN IN</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="/user/signup">CREATE ACCOUNT</a>
+                        </li>
+                    {{/if}}                                                                     
+                </ul>
+            </div>
+        </div><!-- 结束 desktop-user-wrapper -->
+            
+        <div class="desktop-cart-wrapper dropdown">
+            <li class="desktop-cart-trigger">
+                <a href="/shopping-cart/" class=" bag"  >
+                    
+                    <i class="bag-icon" aria-hidden="true"></i>
+                    <span> Bag </span>
+                        
+                    <span class="badge">
+                        {{session.cart.totalQty}}                       
+                    </span>
+                </a>
+                
+                <div id="reload-desktop-cart">
+                    <ul class="desktop-cart dropdown-menu">
+                        <li class="arrow-cart header-bag-title">SHOPPING BAG</li>
+                        <li class="divider"></li>
+                        {{#ifCond session.cart.totalQty ">" 0}}
+
+                            <div class="dropdown-inner">
+                                {{#each session.cart.items}}  
+                                    <li >                                        
+                                        <a href="" class="header-cart-item">
+                                            <img src="{{this.item.imagePath}}" alt="..." class="img-responsive">
+                                            <div class="header-cart-item-info">
+                                            <ul class="header-cart-item-details">
+                                                <li class="header-cart-item-title">
+                                                    {{this.item.title}}
+                                                </li>
+                                                <li class="header-cart-item-qty">
+                                                    Quality:&nbsp{{this.qty}}
+                                                </li>
+                                                <li class="header-cart-item-price">
+                                                    Price:&nbsp${{formatCurrency this.price}}
+                                                </li>
+                                            </ul>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    {{!-- 最后一个不加线 --}}
+                                    {{#if @last}}
+                                                            
+                                    {{else}}
+                                        <li class="divider"></li>
+                                    {{/if}}
+                                {{/each}}
+                            </div>
+
+                            <li class="divider"></li>
+                            <li class="header-bag-subtotal">
+                                <strong>Sub Total:</strong>&nbsp&nbsp&nbsp<strong>$ {{formatCurrency session.cart.totalPrice}}</strong>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li class="header-bag-checkout"> 
+                                <a href="/checkout-step-one" type="button" class="btn btn-success header-checkout-btn">CHECKOUT
+                                </a>
+                            
+                                <a href="/product.shoppingCart" type="button" class="btn btn-success header-details-btn">VIEW BAG DETAILS
+                                </a>
+                            </li>
+                        {{else}}
+                            <li class="header-bag-empty">CURRENTLY EMPTY</li>
+                        {{/ifCond}}
+                    </ul>                   
+                </div>
+            </li>
+        </div><!-- 结束 desktop-cart-wrapper -->
+            
+        <div class="logo">              
+            <a href="/"> DongShop</a>
+        </div>
+
+        <!-- 导入 desktop 的导航条................................................-->
+        <div id="desktop-nav">
+            <div class="head-v3">
+                <div class="navigation-up">
+                    <div id="header2" class="navigation-inner">                                 
+                        <div class="navigation-v3">
+                            <ul>
+                                <li class="nav-up-selected-inpage" _t_nav="women">
+
+                                    <a href="/women">Women</a>
+
+                                </li>
+                                <li class="" _t_nav="men">
+
+                                    <a href="/men">Men</a>                                             
+                                </li>
+                                <li class="" _t_nav="children">
+
+                                    <a href="#">Children</a>
+                                    
+                                </li>
+                                <li class="" _t_nav="sales">
+
+                                    <a href="/sales">Sales</a>
+                                    
+                                </li>
+                                <li class="" _t_nav="contact">
+
+                                    <a href="#">Contact</a>
+                                    
+                                </li>
+                                <li _t_nav="support">
+
+                                    <a href="#">help</a>
+
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-down">
+                    <!-- women 开始 -->
+                    <div id="women" class="nav-down-menu menu-1" style="display: none;" _t_nav="women">
+                        <div class="navigation-down-inner">
+
+                            <dl>
+                                <dt><a href="/women-tops">Tops</a>
+                                </dt>
+                                <dd>
+                                    <a href="/womens-tops">All Tops</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-dresses">Dresses</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-jackets">Jackets</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-sweaters">Sweaters
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-t-shirts">T-Shirts</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-shirts">Shirts</a>
+                                </dd>                                
+                            </dl>
+
+                            <dl>
+                                <dt><a href="/womens-bottoms">Bottoms</a>
+                                </dt>
+                                <dd>
+                                    <a href="/womens-bottoms">All Bottoms</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-pants">Pants</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-jeans">Jeans</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-shorts">Shorts
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-skirts">Skirts</a>
+                                </dd>                                
+                            </dl>
+                            
+                            <dl>
+                                <dt><a href="/womens-Shoes">Shoes</a></dt>
+                                <dd>
+                                    <a href="/womens-Shoes">All Shoes</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Boots</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Trainers</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Flats</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sandals</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="/womens-accessories">Accessories</a>
+                                </dt>
+                                <dd>
+                                    <a href="/womens-accessories">All Accessories</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-bags">Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-hats">Hats</a>
+                                </dd>
+                                <dd>
+                                    <a href="/womens-belts">Belts</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Sales</dt>
+                                <dd>
+                                    <a href="/womens-sales">Sales Clothing</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sales Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sales Shoes</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sales Accessories</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- women 结束 -->
+
+                    <!-- men 开始 -->
+                    <div id="men" class="nav-down-menu menu-1" style="display: none;" _t_nav="men">
+                        <div class="navigation-down-inner">
+                            <dl>
+                                <dt><a href="/mens-tops">Tops</a></dt>
+                                <dd>
+                                    <a href="/mens-tops">All Tops</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-suits">Suits</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-jackets">Jackets</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-sweaters">Sweaters</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-t-sweaters">T-Shirts</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="/mens-bottoms">Bottoms</a>
+                                </dt>
+                                <dd>
+                                    <a href="/mens-bottoms">All Bottoms</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-pants">Pants</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-jeans">Jeans</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-shorts">Shorts</a>
+                                </dd>                               
+                            </dl>
+                            
+                            <dl>
+                                <dt><a href="/mens-shoes">Shoes</a></dt>
+                                <dd>
+                                    <a href="/mens-shoes">All Shoes</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Formal</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Trainers</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Boots</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Casual</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt><a href="/mens-accessories">Accessories</dt>
+                                <dd>
+                                    <a href="/mens-accessories">All Accessories</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-bags">Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-hats">Hats</a>
+                                </dd>
+                                <dd>
+                                    <a href="/mens-belts">Belts</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Sales</dt>
+                                <dd>
+                                    <a href="/mens-sales">Sales Clothing</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sales Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sales Shoes</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Sales Accessories</a>
+                                </dd>
+                            </dl>
+
+                        </div>
+                    </div>
+                    <!-- men 结束 -->
+
+                    <!-- children 开始 -->
+                    <div id="children" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="children">
+                        <div class="navigation-down-inner">
+                            <dl style="margin-left: 100px;">
+                                <dt>BAGS</dt>
+                                <dd>
+                                    <a href="#">Messenger Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Backpacks</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Belt Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Messenger Bags</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Backpacks</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Belt Bags</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>READY TO WEAR</dt>
+                                <dd>
+                                    <a href="#">New: Denim</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Suits
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Jackets</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Coats & Outerwear</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">New: Denim</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Suits
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Jackets</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Coats & Outerwear</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- children 结束 -->
+
+                    <!-- sales 开始 -->
+                    <div id="sales" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="sales">
+                        <div class="navigation-down-inner">
+                            <dl style="margin-left: 100px;">
+                                <dt><a href="#">Sales</a></dt>
+                                <dd>
+                                    <a href="#">All Sales</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Women Sales</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Men Sales</a>
+                                </dd>
+                                <dd>
+                                    <a href="#">Children Sales</a>
+                                </dd>
+                            </dl>
+                            
+                        </div>
+                    </div>
+                    <!-- sales 结束 -->
+
+                    <!-- contact 开始 -->
+                    <!-- <div id="contact" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="contact">
+                        <div class="navigation-down-inner">
+                            <dl style="margin-left: 100px;">
+                                <dd>
+                                    <a class="link" hotrep="hp.header.contact.1" href="#">contact</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <a class="link" hotrep="hp.header.contact.2" href="#">contact</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <a class="link" hotrep="hp.header.contact.3" href="#">contact</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div> -->
+                    <!-- contact 结束 -->
+
+                    <!-- cooperate 开始 -->
+                    <div id="cooperate" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="cooperate">
+                        <div class="navigation-down-inner">
+                            <dl style="margin-left: 100px;">
+                                <dd>
+                                    <a hotrep="hp.header.partner.1" href="#">代理商</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <a hotrep="hp.header.partner.2" href="#">微信服务商</a>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <a hotrep="hp.header.partner.3" href="#">创投机构</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- cooperate 结束 -->
+                </div>
+            </div>
+        </div>
+        <!-- 结束导入desktop的导航条............................................. -->
+    </div>
+</header>
+
+<!-- ................ 以下为点击移动端导航条以后弹出的菜单 ........... -->
+<nav class="cd-dropdown">
+    <h2><!-- Menu --></h2>
+    <a href="#0" class="cd-close">Close</a>
+    <ul class="cd-dropdown-content">
+                <!-- <li>
+                    <form class="cd-search">
+                        <input type="search" placeholder="Search...">
+                    </form>
+                    </li>  -->
+        <li><a href="#">What's New</a></li>
+                <!-- <li class="has-children">  第一组
+                    <a href="#">WHAT'S NEW</a>
+
+                    <ul class="cd-secondary-dropdown is-hidden">
+                        <li class="go-back"><a href="#0">Main Menu</a></li>
+                        <li class="see-all"><a href="#">All Clothing</a></li>
+                        <li class="has-children">
+                            <a href="#">Accessories</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Clothing</a></li>
+                                <li class="see-all"><a href="#">All Accessories</a></li>
+                                <li class="has-children">
+                                    <a href="#0">Beanies</a>
+
+                                    <ul class="is-hidden">
+                                        <li class="go-back"><a href="#0">Accessories</a></li>
+                                        <li class="see-all"><a href="#">All Benies</a></li>
+                                        <li><a href="#">Caps &amp; Hats</a></li>
+                                        <li><a href="#">Gifts</a></li>
+                                        <li><a href="#">Scarves &amp; Snoods</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="#0">Caps &amp; Hats</a>
+
+                                    <ul class="is-hidden">
+                                        <li class="go-back"><a href="#0">Accessories</a></li>
+                                        <li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+                                        <li><a href="#">Beanies</a></li>
+                                        <li><a href="#">Caps</a></li>
+                                        <li><a href="#">Hats</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Glasses</a></li>
+                                <li><a href="#">Gloves</a></li>
+                                <li><a href="#">Jewellery</a></li>
+                                <li><a href="#">Scarves</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-children">
+                            <a href="#">Bottoms</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Clothing</a></li>
+                                <li class="see-all"><a href="#">All Bottoms</a></li>
+                                <li><a href="#">Casual Trousers</a></li>
+                                <li class="has-children">
+                                    <a href="#0">Jeans</a>
+
+                                    <ul class="is-hidden">
+                                        <li class="go-back"><a href="#0">Bottoms</a></li>
+                                        <li class="see-all"><a href="#">All Jeans</a></li>
+                                        <li><a href="#">Ripped</a></li>
+                                        <li><a href="#">Skinny</a></li>
+                                        <li><a href="#">Slim</a></li>
+                                        <li><a href="#">Straight</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#0">Leggings</a></li>
+                                <li><a href="#0">Shorts</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-children">
+                            <a href="#">Jackets</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Clothing</a></li>
+                                <li class="see-all"><a href="#">All Jackets</a></li>
+                                <li><a href="#">Blazers</a></li>
+                                <li><a href="#">Bomber jackets</a></li>
+                                <li><a href="#">Denim Jackets</a></li>
+                                <li><a href="#">Duffle Coats</a></li>
+                                <li><a href="#">Leather Jackets</a></li>
+                                <li><a href="#">Parkas</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-children">
+                            <a href="#">Tops</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Clothing</a></li>
+                                <li class="see-all"><a href="#">All Tops</a></li>
+                                <li><a href="#">Cardigans</a></li>
+                                <li><a href="#">Coats</a></li>
+                                <li><a href="#">Polo Shirts</a></li>
+                                <li><a href="#">Shirts</a></li>
+                                <li class="has-children">
+                                    <a href="#0">T-Shirts</a>
+
+                                    <ul class="is-hidden">
+                                        <li class="go-back"><a href="#0">Tops</a></li>
+                                        <li class="see-all"><a href="#">All T-shirts</a></li>
+                                        <li><a href="#">Plain</a></li>
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Striped</a></li>
+                                        <li><a href="#">Long sleeved</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Vests</a></li>
+                            </ul>
+                        </li>
+                    </ul> 
+                </li> --> <!-- .has-children -->  <!-- end 第一组 -->
+
+        <li class="has-children">  <!-- 第二a组 -->
+            <a href="#">Women</a>
+
+            <ul class="cd-secondary-dropdown is-hidden">
+                <li class="go-back"><a href="#0">Main Menu</a></li>
+                <li class="see-all"><a href="">All Women</a></li>
+                <li class="has-children">
+                    <a href="#">Clothing</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="">All Clothing</a></li>
+                        {{!-- <li class="has-children">
+                            <a href="{{route('product.getProducts',['cat' => 'women_dress'])}}">Dress</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Accessories</a></li>
+                                <li class="see-all"><a href="{{route('product.getProducts',['cat' => 'women_dress'])}}">All Dress</a></li>
+                                <li><a href="#">Caps &amp; Hats</a></li>
+                                <li><a href="#">Gifts</a></li>
+                                <li><a href="#">Scarves &amp; Snoods</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a href="#0">Sweaters</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Accessories</a></li>
+                                <li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+                                <li><a href="#">Beanies</a></li>
+                                <li><a href="#">Caps</a></li>
+                                <li><a href="#">Hats</a></li>
+                            </ul>
+                        </li> --}}
+                        <li><a href="">Dress</a></li>
+                        <li><a href="">Sweaters</a></li>
+                        <li><a href="">Shirts</a></li>                    
+                    </ul>
+                </li>
+
+                {{!-- <li><a href="{{route('product.getProducts',['cat' => 'women_handbags'])}}">Handbags</a></li> --}}
+                <li class="has-children">
+                    <a href="">Handbags</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="">All Handbags</a></li>
+                        <li><a href="">Backpacks</a></li>
+                        <!-- <li class="has-children">
+                            <a href="#0">Gucci</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Bottoms</a></li>
+                                <li class="see-all"><a href="#">All Jeans</a></li>
+                                <li><a href="#">Ripped</a></li>
+                                <li><a href="#">Skinny</a></li>
+                                <li><a href="#">Slim</a></li>
+                                <li><a href="#">Straight</a></li>
+                            </ul>
+                        </li> -->
+                        <li><a href="">Tote Bags</a></li>
+                        <li><a href="">Shoulder Bags</a></li>
+                        <li><a href="">Crossbody Bags</a></li>
+                    </ul>
+                </li>
+
+                {{!-- <li><a href="{{route('product.getProducts',['cat' => 'women_shoes'])}}">Shoes</a></li> --}}
+                <li class="has-children">
+                    <a href="">Shoes</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="">All Shoes</a></li>
+                        <li><a href="">Boots</a></li>
+                        <li><a href="">Trainers</a></li>
+                        <li><a href="">Flats</a></li>
+                        <li><a href="">Sandals</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">Accessories</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="">All Accessories</a></li>
+                        <li><a href="">Belts</a></li>
+                        <li><a href="">Gloves</a></li>
+                        <li><a href="">Hats</a></li>
+                        <!-- <li><a href="#">Shirts</a></li>
+                        <li class="has-children">
+                            <a href="#0">T-Shirts</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Tops</a></li>
+                                <li class="see-all"><a href="#">All T-shirts</a></li>
+                                <li><a href="#">Plain</a></li>
+                                <li><a href="#">Print</a></li>
+                                <li><a href="#">Striped</a></li>
+                                <li><a href="#">Long sleeved</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Vests</a></li> -->
+                    </ul>
+                </li>
+            </ul> <!-- .cd-secondary-dropdown -->
+        </li> <!-- .has-children -->  <!-- end 第二a组 -->
+
+        <li class="has-children">  <!-- 第二b组 -->
+            <a href="#">Men</a>
+
+            <ul class="cd-secondary-dropdown is-hidden">
+                <li class="go-back"><a href="#0">Main Menu</a></li>
+                <li class="see-all"><a href="">All Men</a></li>
+                <li class="has-children">
+                    <a href="#">Clothing</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Men</a></li>
+                        <li class="see-all"><a href="">All Clothing</a></li>
+                        <!-- <li class="has-children">
+                            <a href="#0">Abercrombie&Fitch</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Accessories</a></li>
+                                <li class="see-all"><a href="#">All Benies</a></li>
+                                <li><a href="#">Caps &amp; Hats</a></li>
+                                <li><a href="#">Gifts</a></li>
+                                <li><a href="#">Scarves &amp; Snoods</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a href="#0">Burberry</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Accessories</a></li>
+                                <li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+                                <li><a href="#">Beanies</a></li>
+                                <li><a href="#">Caps</a></li>
+                                <li><a href="#">Hats</a></li>
+                            </ul>
+                        </li> -->
+                        <li><a href="">Suits</a></li>
+                        <li><a href="">Sweaters</a></li>
+                        <li><a href="">Shirts</a></li>
+                    </ul>
+                </li>
+
+                {{!-- <li><a href="{{route('product.getProducts',['cat' => 'men_bags'])}}">Bags</a></li> --}}
+                <li class="has-children">
+                    <a href="">Bag</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">men</a></li>
+                        <li class="see-all"><a href="">All Bag</a></li>
+                        <li><a href="">Backpacks</a></li>
+                        <!-- <li class="has-children">
+                            <a href="#0">Gucci</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Bottoms</a></li>
+                                <li class="see-all"><a href="#">All Jeans</a></li>
+                                <li><a href="#">Ripped</a></li>
+                                <li><a href="#">Skinny</a></li>
+                                <li><a href="#">Slim</a></li>
+                                <li><a href="#">Straight</a></li>
+                            </ul>
+                        </li> -->
+                        <li><a href="">Briefcases</a></li>
+                        <!-- <li><a href="#0">Crossbody Bags</a></li>
+                        <li><a href="#0">Document Cases</a></li>
+                        <li><a href="#0">Messenger Bags</a></li>
+                        <li><a href="#0">Tote Bags</a></li> -->
+                    </ul>
+                </li>
+
+                {{!-- <li><a href="{{route('product.getProducts',['cat' => 'men_shoes'])}}">Shoes</a></li> --}}
+                <li class="has-children">
+                    <a href="">Shoes</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">men</a></li>
+                        <li class="see-all"><a href="">All Shoes</a></li>
+                        <li><a href="">Formal</a></li>
+                        <li><a href="">Boots</a></li>
+                        <!-- <li><a href="#">Clinique</a></li>
+                        <li><a href="#">Lancome</a></li>
+                        <li><a href="#">Lancome</a></li>
+                        <li><a href="#">Lancome</a></li> -->
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">Accessories</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">men</a></li>
+                        <li class="see-all"><a href="">All Accessories</a></li>
+                        <li><a href="">Belts</a></li>
+                        <li><a href="">Gloves</a></li>
+                        <li><a href="">Hats</a></li>
+                        <!-- <li class="has-children">
+                            <a href="#0">T-Shirts</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Tops</a></li>
+                                <li class="see-all"><a href="#">All T-shirts</a></li>
+                                <li><a href="#">Plain</a></li>
+                                <li><a href="#">Print</a></li>
+                                <li><a href="#">Striped</a></li>
+                                <li><a href="#">Long sleeved</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Vests</a></li> -->
+                    </ul>
+                </li>
+            </ul> <!-- .cd-secondary-dropdown -->
+        </li> <!-- .has-children -->  <!-- end 第二b组 -->
+
+        <li class="has-children">  <!-- 第二c组 -->
+            <a href="#">Children</a>
+
+            <ul class="cd-secondary-dropdown is-hidden">
+                <li class="go-back"><a href="#0">Main Menu</a></li>
+                <li class="see-all"><a href="#">All Others</a></li>
+                <li class="has-children">
+                    <a href="#">Baby Formula</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Baby Formula</a></li>
+                        <li class="see-all"><a href="#">All Baby Formula</a></li>
+                        <li class="has-children">
+                            <a href="#0">雅培</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">雅培</a></li>
+                                <li class="see-all"><a href="#">All Benies</a></li>
+                                <li><a href="#">Caps &amp; Hats</a></li>
+                                <li><a href="#">Gifts</a></li>
+                                <li><a href="#">Scarves &amp; Snoods</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a href="#0">costco 奶粉</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">costco 奶粉</a></li>
+                                <li class="see-all"><a href="#">All costco 奶粉</a></li>
+                                <li><a href="#">Beanies</a></li>
+                                <li><a href="#">Caps</a></li>
+                                <li><a href="#">Hats</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">CK</a></li>
+                        <li><a href="#">DKNY</a></li>
+                        <li><a href="#">UGG</a></li>
+                        <li><a href="#">AAA</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">RMH</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="#">All Bag</a></li>
+                        <li><a href="#">Casual Trousers</a></li>
+                        <li class="has-children">
+                            <a href="#0">Gucci</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Bottoms</a></li>
+                                <li class="see-all"><a href="#">All Jeans</a></li>
+                                <li><a href="#">Ripped</a></li>
+                                <li><a href="#">Skinny</a></li>
+                                <li><a href="#">Slim</a></li>
+                                <li><a href="#">Straight</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#0">LV</a></li>
+                        <li><a href="#0">Chanel</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">调料</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="#">All Cosmetics</a></li>
+                        <li><a href="#">Lancome</a></li>
+                        <li><a href="#">Estee Lauder</a></li>
+                        <li><a href="#">Clinique</a></li>
+                        <li><a href="#">Lancome</a></li>
+                        <li><a href="#">Lancome</a></li>
+                        <li><a href="#">Lancome</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#">保健品</a>
+
+                    <ul class="is-hidden">
+                        <li class="go-back"><a href="#0">Women</a></li>
+                        <li class="see-all"><a href="#">All Jewelry</a></li>
+                        <li><a href="#">Cardigans</a></li>
+                        <li><a href="#">Coats</a></li>
+                        <li><a href="#">Polo Shirts</a></li>
+                        <li><a href="#">Shirts</a></li>
+                        <li class="has-children">
+                            <a href="#0">T-Shirts</a>
+
+                            <ul class="is-hidden">
+                                <li class="go-back"><a href="#0">Tops</a></li>
+                                <li class="see-all"><a href="#">All T-shirts</a></li>
+                                <li><a href="#">Plain</a></li>
+                                <li><a href="#">Print</a></li>
+                                <li><a href="#">Striped</a></li>
+                                <li><a href="#">Long sleeved</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Vests</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- .cd-secondary-dropdown -->
+        </li> <!-- .has-children -->  <!-- end 第二c组 -->
+
+
+                <!-- <li class="has-children">  第二组
+                    <a href="#">CLOTHING</a>
+
+                    <ul class="cd-dropdown-gallery is-hidden">
+                        <li class="go-back"><a href="#0">Main Menu</a></li>
+                        <li class="see-all"><a href="#">All Clothing</a></li>
+                        <li>
+                            <a class="cd-dropdown-item" href="#">
+                                <img src="images/img.png" alt="Product Image">
+                                <h3>Product #1</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="cd-dropdown-item" href="#">
+                                <img src="images/img.png" alt="Product Image">
+                                <h3>Product #2</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="cd-dropdown-item" href="#">
+                                <img src="images/img.png" alt="Product Image">
+                                <h3>Product #3</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="cd-dropdown-item" href="#">
+                                <img src="images/img.png" alt="Product Image">
+                                <h3>Product #4</h3>
+                            </a>
+                        </li>
+                    </ul> 
+                </li>  -->
+
+                
+
+        <li class="has-children">  <!-- 第四组 -->
+            <a href="#">Sale</a>
+
+            <ul class="cd-dropdown-gallery is-hidden">
+                <li class="go-back"><a href="#0">Main Menu</a></li>
+                <li class="see-all"><a href="#">Browse Gallery</a></li>
+                <li>
+                    <a class="cd-dropdown-item" href="#">
+                        <img src="#" alt="Product Image">
+                        <h3>Product #1</h3>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="cd-dropdown-item" href="#">
+                        <img src="#" alt="Product Image">
+                        <h3>Product #2</h3>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="cd-dropdown-item" href="#">
+                        <img src="#" alt="Product Image">
+                        <h3>Product #3</h3>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="cd-dropdown-item" href="#">
+                        <img src="#" alt="Product Image">
+                        <h3>Product #4</h3>
+                    </a>
+                </li>
+            </ul> <!-- .cd-dropdown-gallery -->
+        </li> <!-- .has-children -->   <!-- end 第四组 -->
+
+        <li class="cd-divider"><!-- Divider --></li>
+
+        <li><a href="">Sign In</a></li>
+        <li><a href="">Create Account</a></li>
+        <li><a href="">Shopping Bag</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </ul> <!-- .cd-dropdown-content -->
+</nav> <!-- .cd-dropdown -->
+
+<!-- ...................... 以下为点击移动端头部的购物车符号以后弹出的购物车 ........... -->
+<div id="reload">
+    <ul class="mobile-cart" >               
+        <li class="arrow-cart header-bag-title">Shopping Bag</li>
+        <li class="divider"></li> 
+        {{#ifCond session.cart.totalQty ">" 0}} 
+            <div class="dropdown-inner">
+                {{# each session.cart.items }}
+                    <li>
+                        {{!-- <dl>
+                            <dt>
+                                <img src="{{$product['item']['imagePath']}}" alt="..." class="img-responsive">
+                            </dt>
+                            <dd class="header-cart-item-title">
+                                {{$product['item']['title']}}
+                            </dd>
+                            <dd class="header-cart-item-qty">
+                                Quality:&nbsp{{$product['qty']}}
+                            </dd>
+                            <dd class="header-cart-item-price">
+                                Price:&nbsp${{$product['price']}}
+                            </dd>
+                        </dl> --}}
+                        <a href="" class="header-cart-item">
+                            <img src="{{this.item.imagePath}}" alt="..." class="img-responsive">
+                            <div class="header-cart-item-info">
+                            <ul class="header-cart-item-details">
+                                <li class="header-cart-item-title">
+                                    {{this.item.title}}
+                                </li>
+                                <li class="header-cart-item-sku">
+                                    SKU:
+                                </li>
+                                <li class="header-cart-item-sku">
+                                    {{this.item.product_sku}}
+                                </li>
+                                <li class="header-cart-item-sku">
+                                    Size:&nbsp{{this.item.sizeName}}
+                                </li>
+                                <li class="header-cart-item-qty">
+                                    Quality:&nbsp{{this.qty}}
+                                </li>
+                                <li class="header-cart-item-price">{{!-- 下面本来是 $product['price'] --}}
+                                    Price:&nbsp${{formatCurrency this.price}}
+
+
+                                </li>
+                            </ul>
+                            </div>
+                        </a>
+                    </li>                    
+                    {{#if @last}}
+                        
+                    {{else}}
+                        <li class="divider"></li>
+                    {{/if}}
+                {{/each}}
+            </div>
+
+            <li class="divider"></li>
+            <li class="header-bag-subtotal">{{!-- 下面本来是 $totalPriceInChart --}}
+                <span class="sub-total">Sub Total:</span>&nbsp&nbsp&nbsp<span class="sub-total-amount">$ {{formatCurrency session.cart.totalPrice}}</span>
+            </li>
+            <li class="divider"></li>
+            <li class="header-bag-checkout">
+                <a href="/checkout-step-one" type="button" class="btn btn-success header-checkout-btn">CHECKOUT
+                </a>
+            
+                <a href="/product.shoppingCart" type="button" class="btn btn-success header-details-btn">VIEW BAG DETAILS
+                </a>
+            </li>
+        {{else}}
+            <li class="header-bag-empty">Currently empty</li>
+        {{/ifCond}}                                           
+    </ul>
+</div>
+
+ <!-- ...................... 以下为点击移动端头部的搜索框以后弹出的端搜索框 ........... -->
+<nav class="mobile-search" >                               
+    <form class="mobile-search-form">
+        <input type="search" placeholder="Search..." class="input-search" autofocus>
+        <input type="submit" class="btn-search" value="GO">
+    </form>
+</nav>

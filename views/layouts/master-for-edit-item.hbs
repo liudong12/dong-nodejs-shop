@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title> <!--2个花括号表示只输出内容，如果有html标签的话，就忽略  -->
+    <!--To ensure proper rendering and touch zooming, add the viewport meta tag to your <head>.-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+    <!--
+        在移动设备浏览器上，可以通过视口 viewport 设置meta属性为user-scalable=no可以禁用其缩放（zooming）功能，这样后用户只能滚动屏幕。（看情况而定）
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scala=1, user-scalable=no">
+    <!--bootstrap-->
+    {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> --}}
+    <!--font-awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!--自己的css-->
+    <link rel='stylesheet' href='/css/reset.css'/>
+    <link rel='stylesheet' href='/css/app-base.css'/>
+    <link rel='stylesheet' href='/css/mobile-default.css'/>
+    <link rel='stylesheet' href='/css/tablet.css'/>
+    <link rel='stylesheet' href='/css/desktop.css'/>
+    {{!-- <link rel="stylesheet" href='/css/shop.index.css'/> --}}
+    {{#each css}}
+      <link rel='stylesheet' href='{{this}}'/>
+    {{/each}}
+</head>
+<body>
+
+
+<div id="wrapper">
+    <div class="container-fluid">
+        {{{body}}}  <!--3个花括号表示输出内容，并且包括html标签  -->
+    </div>
+</div>
+
+
+<!-- jquery -->
+<!-- <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+
+
+<!-- <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script> -->
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+<script type="text/javascript" src="/js/global.js"></script>
+
+<!--bootstrap.min.js-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<!-- 以下是导入公用的js代码 -->
+
+<script type="text/javascript" src="/js/modernizr.js"></script>  
+<!-- Modernizr   https://modernizr.com/ -->
+
+<!-- 当鼠标放上去以后，弹出菜单的效果 -->
+<script type="text/javascript" src="/js/dropdown.js"></script>
+
+<!-- menu aim 手机导航里面的返回上一级-->
+<script type="text/javascript" src="/js/jquery.menu-aim.js"></script>
+
+<!-- 导航条插件的 js 代码 -->
+<script type="text/javascript" src="/js/main.js"></script>
+
+<!-- 返回顶部的代码 -->
+<script type="text/javascript" src="/js/back-to-top.js"></script>
+
+<!-- http://scottjehl.github.io/picturefill/ -->
+<!-- 用于响应式图片 -->
+<!-- To allow your page to load more efficiently, we'd recommend adding an async attribute to that script tag as well. This tells the browser that it can load picturefill asynchronously, without waiting for it to finish before loading the rest of the document. If you add this attribute, you'll need to add a line of script before the script tag as well to allow older browsers to recognize picture elements if it encounters them in the page before picturefill has finished loading. -->
+<script>
+    <!--
+    // Picture element HTML5 shiv
+    // Note that if you are already including a recent version of the HTML5 Shiv (sometimes packaged with Modernizr), you may not need this line as it is included there as well. Also, more advanced users may not need this may choose to load Picturefill dynamically using a script loader like Require.js, (AMD and CommonJS support is included in the script).
+    -->
+    document.createElement( "picture" );
+</script>
+
+<script type="text/javascript" src="/js/picturefill.js" async></script>
+
+<!-- desktop 导航条的代码 -->
+<script type="text/javascript" src="/js/desktopNav.js"></script>
+
+
+{{#each scripts}}
+  <script type="text/javascript" src="{{this}}"></script>
+{{/each}}
+
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+<div class="" id="shopping-cart">
+  <div class="content">
+    <div class="row">
+      <h1>Shopping Cart</h1>
+    </div>
+          {{!-- 先查看Session里面是否有购物车对象 --}}
+          {{#ifCond session.cart.totalQty ">" 0}}
+              {{!-- 如果有的话 --}}
+              <div class="row btn-up">
+                   <a href="/checkout-step-one" type="button" class="btn-success btn-checkout">Checkout</a>
+              </div>
+                         
+              <div class="items-wrap">
+                {{#each products}}               
+                    <ul class="item-in-cart clearfix">
+                        <li class="item-img">
+                           <img src="{{this.item.imagePath}}" alt="..." >
+                        </li>
+                        <li class="item-info">
+                          <span class="item-info-title"><strong>{{this.item.title}}</strong></span><br>
+                          <span class="item-info-sku">SKU:{{this.item.product_sku}}</span><br>
+                          <span class="item-info-size">Size:{{this.item.sizeName}}</span><br>
+                          <span class="item-info-qty">{{this.qty}}</span><br>
+                          <span class="item-info-price"><strong>${{formatCurrency this.price}}</span><br>
+                          <span class="item-remove">
+                            <a href="" class="cart-item-remove" data-sku="{{this.item.product_sku}}">Remove</a>
+                          </span>
+                          <span class="item-edit">
+                            {{!-- <a href="" class="edit-item">Edit</a> --}}
+                            <a class="show-layer" data-show-layer="hw-layer" data-sku="{{this.item.product_sku}}" role="button">Edit</a>
+                          </span>                         
+                        </li>
+                    </ul>
+                {{/each}}
+              </div>
+              <div class="shopping-cart-right-wrap">
+                <div class="row"> 
+                    <p class="subtotal"><span>SUBTOTAL&nbsp&nbsp&nbsp&nbsp&nbsp${{formatCurrency totalPrice}}&nbsp</span></p>
+                </div>
+                <div class="row">
+                  <p class="shipping-handle"><a>shipping and handling</a></p>
+                </div>
+
+                <div class="row">
+                  <a href="/checkout-step-one" type="button" class="btn-success btn-checkout btn-down">Checkout</a>
+                </div>
+              </div>
+          {{else}}
+              <div class="row">
+                <div class="no-item-in-cart">
+                  <h2>No Items in Cart!</h2>
+                </div> 
+              </div>
+          {{/ifCond}}
+      
+
+      <div class="hw-overlay" id="hw-layer"> 
+        <div class="edit-popup-header">
+            <p class="edit-popup-header-title">EDIT</p>
+            <span class="hwLayer-close edit-popup-close"></span> 
+        </div>
+          <div class="hw-layer-wrap">        
+              <div class="edit-cart-item-reload" id="edit-cart-item-reload">
+                <div class="loading"></div> 
+                {{!-- <h4>你确定吗？</h4> 
+                <p>
+                这是HTML+CSS+Javascript实现的一个弹出层效果，它是响应式的，它可以在所有现代浏览器上工作（包括PC和移动端）。
+                </p>  --}}
+
+                {{!-- <button class="btn btn-success hwLayer-ok">确 定</button> 
+                <button class="btn btn-warning hwLayer-cancel">取 消</button>  --}}
+              </div> 
+          </div>
+      </div>   
+  </div>   {{!-- end .content --}}
+</div> {{!-- end #shopping-cart --}}

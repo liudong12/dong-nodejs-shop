@@ -1,0 +1,115 @@
+<div class="content">
+	<div class="row">
+        <h1 class="checkout-finish-h1 checkout-finish-title">Thank you. Your order has been submitted.</h1>
+        <div class="order-summary-container">
+        	<div class="order-summary">ORDER SUMMARY</div>
+	        <div class="order-summary-section">		        
+	        	<table>
+	        		<tbody>
+	        			<tr>
+	        				<th>Order Number</th>
+	        				<td>{{orderSummary.order_sn}}</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Order Date</th>
+	        				<td>{{!-- 11/02/16  --}} {{getDate orderSummary.created_at}}</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Merchandise Total</th>
+	        				<td>$&nbsp{{formatCurrency orderSummary.merchandise_total}}</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Shipping & Handling<br>Standard</th>
+	        				<td>$&nbsp10.00</td>
+	        			</tr>
+	        			<tr>
+	        				
+	        			</tr>
+	        			<tr>
+	        				<th>Estimated Sales Tax</th>
+	        				<td>$&nbsp10.00</td>
+	        			</tr>
+	        			<tr>
+	        				
+	        			</tr>
+	        			<tr>
+	        				<th class="bold">ORDER TOTAL</th>
+	        				<td class="bold">$&nbsp{{formatCurrency orderSummary.order_total}}</td>
+	        			</tr>
+	        			
+	        		</tbody>
+	        	</table>			      
+	        </div>
+        </div>
+
+        <div class="order-details-container">
+	        <div class="order-details folding">ORDER DETAILS <span class="icon"></span></div>
+	        
+	        <div class="order-details-section">
+		        <ul>
+		            {{#if session.order}}
+
+			        	<div class="dropdown-inner">
+
+			        		
+			        		{{#each productsInOrder}}
+				        		<li>
+				        			{{!-- <dl>
+				        				<dt>
+				        					<img src="{{$product['item']['imagePath']}}" alt="..." class="img-responsive">
+				        				</dt>
+				        				<dd class="header-cart-item-title">
+				        					{{$product['item']['title']}}
+				        				</dd>
+				        				<dd class="header-cart-item-qty">
+				        					Quality:&nbsp{{$product['qty']}}
+				        				</dd>
+				        				<dd class="header-cart-item-price">
+				        					Price:&nbsp${{$product['price']}}
+				        				</dd>
+				        			</dl> --}}
+				        			<a href="" class="header-cart-item">
+				        				<img src="{{this.item.imagePath}}" alt="..." class="img-responsive">
+				        				<div class="header-cart-item-info">
+					        				<ul class="header-cart-item-details">
+					        					<li class="header-cart-item-title">
+					        						{{this.item.title}}
+					        					</li>
+					        					<li class="header-cart-item-qty">
+					        						Quality:&nbsp{{this.qty}}
+					        					</li>
+					        					<li class="header-cart-item-price">
+					        						Price:&nbsp${{formatCurrency this.price}}
+					        					</li>
+					        				</ul>
+				        				</div>
+				        			</a>
+				        		</li>
+
+				        		{{!-- 最后一个不加线 --}}
+				        		{{#if @last}}
+				        		                                                                                            
+                                {{else}}
+                                    <li class="divider"></li>
+                                {{/if}}
+
+			        		
+			        		{{/each}}
+
+			        	</div>
+			        
+		        	{{else}}
+
+		        		<li class="header-bag-empty">Currently empty</li>
+	
+		        	{{/if}}		
+		   		 </ul>
+	        	
+	        </div>
+        </div>	        	    
+
+
+        
+	</div>  {{!-- end .row --}}
+	<div class="clearfix"></div>
+</div> {{!-- end .content --}}
